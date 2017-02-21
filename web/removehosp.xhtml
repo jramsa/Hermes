@@ -46,8 +46,8 @@
                         <table class = "form3">
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " />
-                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.listHospital()}" style="width:205px" var="name">
-                                       
+                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.listHospital()}" style="width:205px">
+                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="name" itemValue="#{hospitalBean.hospital.hospitalName}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
