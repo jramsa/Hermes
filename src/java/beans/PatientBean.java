@@ -42,7 +42,7 @@ public class PatientBean implements Serializable {
     }
     
     
-    public String createPatient() {ty
+    public String createPatient() {
         int created = facade.createPatient(patient);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == 1) {
