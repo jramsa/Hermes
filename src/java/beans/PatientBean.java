@@ -43,8 +43,9 @@ public class PatientBean implements Serializable {
     }
     
     public String selectPatient(SelectEvent event){
+        selectedPatient = new PatientEntity();
         this.selectedPatient = (PatientEntity) event.getObject();
-        System.out.println(this.selectedPatient);
+        System.out.println((PatientEntity) event.getObject());
         return "resultPatient";
     }
     
