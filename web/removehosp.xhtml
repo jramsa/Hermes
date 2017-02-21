@@ -47,7 +47,7 @@
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " />
                                     <p:selectOneMenu id="hosp" value="#{hospitalBean.hospital.hospitalName}" style="width:205px">
-                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="hospitalName" itemValue="#{hospitalBean.hospital.hospitalName}" />
+                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="hospitalName" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>

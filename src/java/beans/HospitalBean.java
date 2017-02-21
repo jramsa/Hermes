@@ -77,15 +77,13 @@ public class HospitalBean implements Serializable {
     
     public String removeHospital(){
         HospitalEntity hosp = facade.find(this.hospital.getHospitalName());
-        System.out.println(hosp.getHospitalName());
-        System.out.println(hosp.getPostalAddress());
         boolean deleted = facade.deleteHosp(hosp);
         RequestContext context = RequestContext.getCurrentInstance();
         if (deleted == true) {
-            context.execute("swal('Félicitations','Hopital supprimé','success')");
-            return "removehosp";
+            context.execute("swal('Félicitations','Hôpital supprimé','success')");
+            this.hospital = new HospitalEntity();
+            return "addhosp";
         } else {
-            
             context.execute("swal('Oups...','Suppression impossible','error')");
             return "removehosp";
         }

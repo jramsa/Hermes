@@ -72,11 +72,9 @@ public class UserBean implements Serializable{
         boolean deleted = facade.deleteUser(user);
         RequestContext context = RequestContext.getCurrentInstance();
         if (deleted == true) {
-            
             context.execute("swal('Félicitations','Utilisateur supprimé','success')");
             return "removeuser";
         } else {
-            
             context.execute("swal('Oups...','Suppression impossible','error')");
             return "removeuser";
         }

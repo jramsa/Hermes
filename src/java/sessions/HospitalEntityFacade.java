@@ -50,11 +50,13 @@ public class HospitalEntityFacade extends AbstractFacade<HospitalEntity> {
     public boolean deleteHosp(HospitalEntity h){
         HospitalEntity hospital = em.find(HospitalEntity.class, h.getHospitalName());
         if(hospital != null){
-            hospital =em.merge(hospital);
+            //hospital = (HospitalEntity)em.merge(hospital);
             em.remove(hospital);
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
     
 }
