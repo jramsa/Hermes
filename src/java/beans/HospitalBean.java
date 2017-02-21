@@ -59,18 +59,15 @@ public class HospitalBean implements Serializable {
             return "addhosp";
         } else {
             context.execute("swal('Oups...','Hôpital existe déjà','error')");
+            this.hospital = new HospitalEntity();
             return "addhosp";
         }
     }
     
     public void updateHospital() {
-        RequestContext context = RequestContext.getCurrentInstance();
         HospitalEntity h = facade.find(this.hospital.getHospitalName());
         if (h != null) {
             facade.edit(this.hospital);
-            context.execute("swal('Success','Hospital has been modified','success')");
-        } else {
-            context.execute("swal('Oups...','This Hospital does not exist','error')");
         }
     }
     
@@ -79,8 +76,10 @@ public class HospitalBean implements Serializable {
     }
     
     public String removeHospital(){
-        //System.out.println(hospital.getHospitalName());
-        boolean deleted = facade.deleteHosp(hospital);
+        HospitalEntity hosp = facade.find(this.hospital.getHospitalName());
+        System.out.println(hosp.getHospitalName());
+        System.out.println(hosp.getPostalAddress());
+        boolean deleted = facade.deleteHosp(hosp);
         RequestContext context = RequestContext.getCurrentInstance();
         if (deleted == true) {
             context.execute("swal('Félicitations','Hopital supprimé','success')");
