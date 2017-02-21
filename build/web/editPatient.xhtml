@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      lang="en" xml:lang="en">
+
+    <h:head>
+        <title>MonSI APHP</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
+        <style>
+        </style>
+        <h:outputStylesheet library="css" name="sweetalert.css" />
+        <h:outputScript library="js" name="sweetalert.min.js" />
+    </h:head>
+
+    <h:body>
+
+        <div class="bod">
+            <header>
+                <img src="img/aphp.jpg" alt="Logo APHP" class="logo" />
+                MonSI APHP
+            </header>	
+
+
+            <div class="corps">
+
+                <table class="droite">
+                    <tr>
+                        <td colspan="2" class="texteDr">$date</td>
+                    </tr>
+                    <tr>
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td>
+                        <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
+                    </tr>
+                </table>
+
+                <br/><br/>
+
+                <div>
+
+                    <table class="formResult">
+                        <tr>
+                            <td class="gris">#{patientBean.patient.firsnamePatient} #{patientBean.patient.lastnamePatient}</td>
+                        </tr>
+                    </table>
+
+                    <h:form>
+                        <table class = "form">
+                            <tr>
+                                <td ><h:outputText value="Sexe : " /></td>
+                                <td><p:selectOneMenu id="sexPatient" value="#{patientBean.patient.sexPatient}" style="width:205px">
+                                        <f:selectItem itemLabel="Masculin" itemValue="M" />
+                                        <f:selectItem itemLabel="F&eacute;minin" itemValue="F" />
+                                    </p:selectOneMenu></td>
+                                <td ><h:outputText value="Num&eacute;ro et nom de rue : " /></td>
+                                <td><p:inputText id="detailAddress" value="#{patientBean.patient.detailAddress}" /></td>
+                            </tr>
+                            <tr>
+                                <td ><h:outputText value="Groupe sanguin : " /></td>
+                                <td><p:selectOneMenu id="bloodGroup" value="#{patientBean.patient.bloodGroup}" style="width:205px">
+                                        <f:selectItem itemLabel="A+" itemValue="A+" />
+                                        <f:selectItem itemLabel="A-" itemValue="A-" />
+                                        <f:selectItem itemLabel="B+" itemValue="B+" />
+                                        <f:selectItem itemLabel="B-" itemValue="B-" />
+                                        <f:selectItem itemLabel="AB+" itemValue="AB+" />
+                                        <f:selectItem itemLabel="AB-" itemValue="AB-" />
+                                        <f:selectItem itemLabel="O+" itemValue="O+" />
+                                        <f:selectItem itemLabel="O-" itemValue="O-" />
+                                    </p:selectOneMenu></td>
+                                <td ><h:outputText value="Code Postal : " /></td>
+                                <td><p:inputText id="postalAddress" value="#{patientBean.patient.postalAddress}" maxlength="5"/></td>
+                            </tr>
+                            <tr>
+                                <td ><h:outputText value="Date de naissance : " /></td>
+                                <td><p:calendar id="dateOfBirth" value="#{patientBean.patient.dateOfBirth}" /></td>
+                                <td >Ville : </td>
+                                <td><p:inputText id="cityAddress" value="#{patientBean.patient.cityAddress}" /></td>
+                            </tr>
+                            <tr>
+                                <td ><h:outputText value="Num. s&eacute;curit&eacute; sociale : " /> </td>
+                                <td>#{patientBean.patient.socialSecurityId}</td>
+                                <td ><h:outputText value="Pays : " /> </td>
+                                <td><p:inputText id="countryAddress" value="#{patientBean.patient.countryAddress}" /></td>
+                            </tr>
+                        </table>
+
+                        <table class="form2">
+                            <tr>
+                                <td colspan="2"><p:commandButton action="#{patientBean.updatePatient()}" value="Enregistrer" class="boutonBleu2"></p:commandButton></td>
+                            </tr>
+                            <tr>
+                                <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
+                                <td><br/><p:link outcome="resultPatient" value="&lt; Retour Page pr&eacute;c&eacute;dent" class="texteBleu"></p:link></td>
+                            </tr>
+                        </table>
+                    </h:form>
+
+                </div>	
+            </div>
+
+            <footer>
+                2017 Copyright Olympus - Aide - Contact
+            </footer>
+        </div>
+
+    </h:body>
+</html>

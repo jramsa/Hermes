@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" lang="en" xml:lang="en">
+    <h:head>		
+        <title>MonSI APHP</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
+        <style>
+        </style> 
+    </h:head>
+
+    <h:body>
+
+        <div class="bod">
+            <header>
+                <img src="img/aphp.jpg" alt="Logo APHP" class="logo" />
+                MonSI APHP
+            </header>	
+
+
+            <div class="corps">
+                <table class="droite">
+                    <tr>
+                        <td colspan="2" class="texteDr">$date</td>
+                    </tr>
+                    <tr>
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td> 
+                        <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
+                    </tr>
+                </table>
+                
+                <br/><br/>
+                
+                <div>
+
+                    <table class="formResult">
+                        <tr>
+                            <td class="gris2">Libell&eacute; m&eacute;tier : $libelle <br/>
+                                p&ocirc;le $nompole <br/>
+                                service $nomservice</td>
+                            <td class="gris2">$namehopital<br/>
+                                $detailAddress<br/>
+                                $postalAddress $cityAddress<br/>
+                                $countryAddress
+                            </td>			
+                        </tr>
+                    </table>
+
+                    <table class = "form2">
+                        <tr>
+                            <td class="boutonVert"><p:link outcome="viewPrescription" value="Consulter mes prescriptions" class="texteBlanc"></p:link></td>
+                            <td class="boutonVert"><p:link outcome="viewIntervention" value="Consulter mes interventions" class="texteBlanc"></p:link></td>
+                            <td class="boutonVert"><p:link outcome="viewNote" value="Consulter mes notes professionnelles" class="texteBlanc"></p:link></td>
+                        </tr>
+                    </table>
+
+                    <table class="form2">
+                        <tr>
+                            <td><p:link outcome="accueil" value="&lt; Retour Page pr&eacute;c&eacute;dente" class="texteBleu"></p:link></td>
+                        </tr>
+                    </table>
+
+                </div>	
+            </div>
+
+            <footer>
+                2017 Copyright Olympus - Aide - Contact
+            </footer>
+        </div>
+
+
+    </h:body>
+</html>

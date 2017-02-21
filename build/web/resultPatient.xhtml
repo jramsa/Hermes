@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      lang="en" xml:lang="en">
+
+    <h:head>
+        <title>MonSI APHP</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
+        <style>
+        </style>
+        <h:outputStylesheet library="css" name="sweetalert.css" />
+        <h:outputScript library="js" name="sweetalert.min.js" /> 
+    </h:head>
+
+    <h:body>
+
+        <div class="bod">
+
+            <header>
+                <img src="img/aphp.jpg" alt="Logo APHP" class="logo" />
+                MonSI APHP
+            </header>	
+
+
+            <div class="corps">
+                <table class="droite"><tr>
+                        <td colspan="2" class="texteDr">$date</td></tr>
+                    <tr>
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td> 
+                        <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
+                    </tr>
+                </table>
+
+                <br/><br/>
+
+                <f:metadata>
+                    <f:viewParam name="secuId" value="#{linkBean.productId}" />
+                </f:metadata>
+
+                <div>
+                    <table class = "infoPatient">
+                        <tr>
+                            <td class="gras" colspan="2">Dossier m&eacute;dical #{patientBean.patient.firsnamePatient} #{patientBean.patient.lastnamePatient}</td>
+                        </tr>
+                        <tr>
+                            <td ><br/><br/>Sexe : #{patientBean.patient.sexPatient}</td>
+                            <td ><br/><br/>Addresse :</td>
+                        </tr>
+                        <tr>
+                            <td >Groupe sanguin : #{patientBean.patient.bloodGroup}</td>
+                            <td >#{patientBean.patient.detailAddress}</td>
+                        </tr>
+                        <tr>
+                            <td >Date de naissance : #{patientBean.patient.dateOfBirth}</td>
+                            <td > #{patientBean.patient.postalAddress} #{patientBean.patient.cityAddress}</td>
+                        </tr>
+                        <tr>
+                            <td >Num. s&eacute;curit&eacute; sociale : #{linkBean.productId}</td>
+                            <td >#{patientBean.patient.countryAddress}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h:form>
+                                    <h:commandLink action="editPatient">
+                                        <h:graphicImage value="img/crayon.png" class="logo3" />
+                                    </h:commandLink>
+                                </h:form>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="form2">
+                        <tr>
+                            <td class="boutonBleu"><p:link outcome="addPrescription" value="Ajouter une prescription" class="texteBlanc"></p:link></td>
+                            <td class="boutonBleu"><p:link outcome="addIntervention" value="Ajouter une intervention" class="texteBlanc"></p:link></td>
+                            <td class="boutonBleu"><p:link outcome="addNote" value="Ajouter une note professionnelle" class="texteBlanc"></p:link></td>
+                        </tr>
+                        <tr>
+                            <td class="boutonVert"><p:link outcome="viewPatientPrescription" value="Consulter les prescriptions" class="texteBlanc"></p:link></td>
+                            <td class="boutonVert"><p:link outcome="viewPatientIntervention" value="Consulter les interventions" class="texteBlanc"></p:link></td>
+                            <td class="boutonVert"><p:link outcome="viewPatientNotes" value="Consulter les notes professionnelles" class="texteBlanc"></p:link></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
+                            <td><br/><p:link outcome="searchResult" value="&lt; Retour Page pr&eacute;c&eacute;dent" class="texteBleu"></p:link></td>
+                        </tr>
+                    </table>
+
+                </div>	
+            </div>
+
+            <footer>
+                2017 Copyright Olympus - Aide - Contact
+            </footer>
+        </div>
+
+    </h:body>
+</html>

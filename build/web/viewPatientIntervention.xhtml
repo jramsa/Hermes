@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      lang="fr" xml:lang="fr">
+
+    <h:head>
+        <title>MonSI APHP</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
+        <style>
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+    </h:head>
+
+    <h:body>
+
+        <div class="bod">
+            <header>
+                <img src="img/aphp.jpg" alt="Logo APHP" class="logo" />
+                MonSI APHP
+            </header>	
+
+
+            <div class="corps">
+                <table class="droite">
+                    <tr>
+                        <td colspan="2" class="texteDr">$date</td>
+                    </tr>
+                    <tr>
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td>
+                        <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
+                    </tr>
+                </table>
+
+                <br/><br/>
+
+                <div>
+                    <table class = "infoPatient">
+                        <tr>
+                            <td class="gras" colspan="2">Dossier m&eacute;dical $nom</td>
+                        </tr>
+                        <tr>
+                            <td ><br/><br/>Sexe : $sexe</td>
+                            <td ><br/><br/>Addresse :</td>
+                        </tr>
+                        <tr>
+                            <td >Groupe sanguin : $groupesanguin</td>
+                            <td >$detailAddress</td>
+                        </tr>
+                        <tr>
+                            <td >Date de naissance : $date</td>
+                            <td > $postalAdress $ville</td>
+                        </tr>
+                        <tr>
+                            <td >Num. s&eacute;curit&eacute; sociale : $numero</td>
+                            <td >$countryAddress</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h:commandLink action="editPatient">
+                                    <h:graphicImage value="img/crayon.png" class="logo3" />
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="bcentre">
+                        <tr>
+                            <td class="boutonVert">Consulter une intervention</td>
+                        </tr>
+                    </table>
+
+                    <table border="1" class="formResult">
+                        <tr>
+                            <td colspan="2" class="gris">Intervention $id</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Type :</td>
+                            <td class="textecentre">$type</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Date intervention :</td>
+                            <td class="textecentre">$date</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Prix :</td>
+                            <td class="textecentre">$prix</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Notes :</td>
+                            <td class="textecentre">$notes</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Date :</td>
+                            <td class="textecentre">$date</td>
+                        </tr>
+                        <tr>
+                            <td class="gris">Editeur :</td>
+                            <td class="textecentre">$editeur</td>
+                        </tr>
+                    </table>
+
+
+                    <table class="form2">
+                        <tr>
+                            <td><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
+                            <td><p:link outcome="resultPatient" value="&lt; Retour Page pr&eacute;c&eacute;dent" class="texteBleu"></p:link></td>
+                        </tr>
+                    </table>
+
+                </div>	
+            </div>
+
+            <footer>
+                2017 Copyright Olympus - Aide - Contact
+            </footer>
+        </div>
+
+    </h:body>
+</html>
