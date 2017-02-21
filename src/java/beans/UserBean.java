@@ -47,8 +47,6 @@ public class UserBean implements Serializable{
             else if(tmp.getPassword().equals(this.user.getPassword())){
                 //this.user = new UserEntity();
                 this.user = tmp;
-                System.out.println(this.user.getLastnameUser());
-                
                 return "accueil";
             }
             else{
