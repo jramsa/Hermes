@@ -24,10 +24,13 @@ public class HospitalBean implements Serializable {
 
     @EJB
     HospitalEntityFacade facade;
+    
+    private HospitalEntity hospital;
 
-    /**
-     * @return the facade
-     */
+    public HospitalBean() {
+        hospital = new HospitalEntity();
+    }
+    
     public HospitalEntityFacade getFacade() {
         return facade;
     }
@@ -37,12 +40,6 @@ public class HospitalBean implements Serializable {
      */
     public void setFacade(HospitalEntityFacade facade) {
         this.facade = facade;
-    }
-
-    private HospitalEntity hospital;
-
-    public HospitalBean() {
-        hospital = new HospitalEntity();
     }
 
     public HospitalEntity getHospital() {
@@ -75,11 +72,24 @@ public class HospitalBean implements Serializable {
         } else {
             context.execute("swal('Oups...','This Hospital does not exist','error')");
         }
-
     }
     
     public List<HospitalEntity> listHospital(){
         return facade.getlistHospital();
+    }
+    
+    public String removeHospital(){
+        //System.out.println(hospital.getHospitalName());
+        boolean deleted = facade.deleteHosp(hospital);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (deleted == true) {
+            context.execute("swal('Félicitations','Hopital supprimé','success')");
+            return "removehosp";
+        } else {
+            
+            context.execute("swal('Oups...','Suppression impossible','error')");
+            return "removehosp";
+        }
     }
 
 }

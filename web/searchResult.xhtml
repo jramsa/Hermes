@@ -24,7 +24,7 @@
             <div class="corps">
                 <table class="droite">
                     <tr>
-                        <td colspan="2" class="texteDr">$date</td>
+                        <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
                         <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td> 
@@ -50,9 +50,10 @@
                         </p:column>
 
                         <p:column headerText="Date de naissance">
-                            <p:link outcome="resultPatient" value="#{p.dateOfBirth}">
+                            <p:outputLabel value="#{p.dateOfBirth}"></p:outputLabel>
+                            <!--<p:link outcome="resultPatient" value="#{p.dateOfBirth}">
                                 <f:param name="secuId" value="#{p}" />
-                            </p:link>
+                            </p:link>-->
                         </p:column>
 
                         <p:column headerText="Ville">
@@ -63,10 +64,12 @@
                         </p:column>
                         
                         <p:column headerText="Num. s&eacute;cu. sociale">
-                            <p:link outcome="resultPatient" value="#{p.socialSecurityId}">
+                            <p:outputLabel value="#{p.socialSecurityId}"></p:outputLabel>
+                            <!--<p:link outcome="resultPatient" value="#{p.socialSecurityId}">
                                 <f:param name="secuId" value="#{p}" />
-                            </p:link>
+                            </p:link>-->
                         </p:column>
+                        
                         <p:column headerText="">
                             <p:commandButton value="Select" action="#{patientBean.selectedPatient()}" />
                         </p:column>

@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "HospitalEntity.findByCityAddress", query = "SELECT h FROM HospitalEntity h WHERE h.cityAddress = :cityAddress")
     , @NamedQuery(name = "HospitalEntity.findByPostalAddress", query = "SELECT h FROM HospitalEntity h WHERE h.postalAddress = :postalAddress")
     , @NamedQuery(name = "HospitalEntity.findByCountryAddress", query = "SELECT h FROM HospitalEntity h WHERE h.countryAddress = :countryAddress")})
+
 public class HospitalEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -134,7 +135,8 @@ public class HospitalEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.HospitalEntity[ hospitalName=" + hospitalName + " ]";
+        //return "entities.HospitalEntity[ hospitalName=" + hospitalName + " ]";
+        return hospitalName;
     }
     
 }
