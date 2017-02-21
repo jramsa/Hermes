@@ -82,7 +82,7 @@ public class HospitalBean implements Serializable {
         if (deleted == true) {
             context.execute("swal('Félicitations','Hôpital supprimé','success')");
             this.hospital = new HospitalEntity();
-            return "addhosp";
+            return "admin";//removehosp
         } else {
             context.execute("swal('Oups...','Suppression impossible','error')");
             return "removehosp";
