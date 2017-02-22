@@ -48,7 +48,7 @@
                                 <td ><h:outputText value="Nom du p&ocirc;le : " /></td>
                                 <td>
                                     <p:selectOneMenu id="serv" value="#{hubBean.hub.hubName}" style="width:205px">
-                                        <f:selectItems value="#{hubBean.listHub()}" var="serviceName" itemValue="#{hospitalBean.hospital.hospitalName}"/>
+                                        <f:selectItems value="#{hubBean.listHub()}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -63,6 +63,7 @@
                             </tr>
                         </table>
                     </h:form>
+                    
                 </div>	
             </div>
 

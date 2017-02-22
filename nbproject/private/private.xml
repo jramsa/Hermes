@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/sessions/HubEntityFacade.java</file>
+            <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/entities/HospitalEntity.java</file>
             <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/entities/HubEntity.java</file>
-            <file>file:/Users/Jerry/NetBeansProjects/Hermes/web/addhub.xhtml</file>
             <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/sessions/AbstractFacade.java</file>
             <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/beans/HubBean.java</file>
-            <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/conf/persistence.xml</file>
-            <file>file:/Users/Jerry/NetBeansProjects/Hermes/src/java/sessions/HospitalEntityFacade.java</file>
-            <file>file:/Users/Jerry/NetBeansProjects/Hermes/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

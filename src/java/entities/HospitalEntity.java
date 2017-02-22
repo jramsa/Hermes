@@ -6,16 +6,21 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,6 +38,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "HospitalEntity.findByCountryAddress", query = "SELECT h FROM HospitalEntity h WHERE h.countryAddress = :countryAddress")})
 
 public class HospitalEntity implements Serializable {
+
+    @JoinTable(name = "hasHub", joinColumns = {
+        @JoinColumn(name = "hospitalName", referencedColumnName = "hospitalName")}, inverseJoinColumns = {
+        @JoinColumn(name = "idHub", referencedColumnName = "idHub")})
+    @ManyToMany
+    private List<HubEntity> hubEntityList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -137,6 +148,15 @@ public class HospitalEntity implements Serializable {
     public String toString() {
         //return "entities.HospitalEntity[ hospitalName=" + hospitalName + " ]";
         return hospitalName;
+    }
+
+    @XmlTransient
+    public List<HubEntity> getHubEntityList() {
+        return hubEntityList;
+    }
+
+    public void setHubEntityList(List<HubEntity> hubEntityList) {
+        this.hubEntityList = hubEntityList;
     }
     
 }
