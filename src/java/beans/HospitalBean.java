@@ -24,10 +24,13 @@ public class HospitalBean implements Serializable {
 
     @EJB
     HospitalEntityFacade facade;
+    
+    private HospitalEntity hospital;
 
-    /**
-     * @return the facade
-     */
+    public HospitalBean() {
+        hospital = new HospitalEntity();
+    }
+    
     public HospitalEntityFacade getFacade() {
         return facade;
     }
@@ -37,12 +40,6 @@ public class HospitalBean implements Serializable {
      */
     public void setFacade(HospitalEntityFacade facade) {
         this.facade = facade;
-    }
-
-    private HospitalEntity hospital;
-
-    public HospitalBean() {
-        hospital = new HospitalEntity();
     }
 
     public HospitalEntity getHospital() {
@@ -62,24 +59,34 @@ public class HospitalBean implements Serializable {
             return "addhosp";
         } else {
             context.execute("swal('Oups...','Hôpital existe déjà','error')");
+            this.hospital = new HospitalEntity();
             return "addhosp";
         }
     }
     
     public void updateHospital() {
-        RequestContext context = RequestContext.getCurrentInstance();
         HospitalEntity h = facade.find(this.hospital.getHospitalName());
         if (h != null) {
             facade.edit(this.hospital);
-            context.execute("swal('Success','Hospital has been modified','success')");
-        } else {
-            context.execute("swal('Oups...','This Hospital does not exist','error')");
         }
-
     }
     
     public List<HospitalEntity> listHospital(){
         return facade.getlistHospital();
+    }
+    
+    public String removeHospital(){
+        HospitalEntity hosp = facade.find(this.hospital.getHospitalName());
+        boolean deleted = facade.deleteHosp(hosp);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (deleted == true) {
+            context.execute("swal('Félicitations','Hôpital supprimé','success')");
+            this.hospital = new HospitalEntity();
+            return "admin";//removehosp
+        } else {
+            context.execute("swal('Oups...','Suppression impossible','error')");
+            return "removehosp";
+        }
     }
 
 }

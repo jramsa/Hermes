@@ -27,7 +27,7 @@
             <div class="corps">
                 <table class="droite">
                     <tr>
-                        <td colspan="2" class="texteDr">$date</td>
+                        <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
                         <td class = "gras">Bonjour Admin</td> 
@@ -46,8 +46,8 @@
                         <table class = "form3">
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " />
-                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.listHospital()}" style="width:205px" var="name">
-                                        <f:selectItem value="#{hospitalBean.listHospital()}" />
+                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.hospital.hospitalName}" style="width:205px">
+                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="hospitalName" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -55,7 +55,7 @@
 
                         <table class="form2">
                             <tr>
-                                <td><p:commandButton action="e" value="Enregistrer" class="boutonBleu2" /></td>
+                                <td><p:commandButton action="#{hospitalBean.removeHospital()}" value="Enregistrer" class="boutonBleu2" /></td>
                             </tr>
                             <tr>
                                 <td><p:link outcome="admin" value="&lt; Retour Page pr&eacute;c&eacute;dente" class="texteBleu"></p:link></td>

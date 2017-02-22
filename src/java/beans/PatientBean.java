@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.context.RequestContext;
 import sessions.PatientEntityFacade;
 import java.util.List;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -39,6 +40,13 @@ public class PatientBean implements Serializable {
         patient = new PatientEntity();
         listPatient = new ArrayList<>();
         selectedPatient = new PatientEntity();
+    }
+    
+    public String selectPatient(SelectEvent event){
+        selectedPatient = new PatientEntity();
+        this.selectedPatient = (PatientEntity) event.getObject();
+        System.out.println((PatientEntity) event.getObject());
+        return "resultPatient";
     }
     
     
@@ -104,6 +112,20 @@ public class PatientBean implements Serializable {
             context.execute("swal('Oups...','Modifications non enregistrées','error')");
         }
 
+    }
+
+    /**
+     * @return the selectedPatient
+     */
+    public PatientEntity getSelectedPatient() {
+        return selectedPatient;
+    }
+
+    /**
+     * @param selectedPatient the selectedPatient to set
+     */
+    public void setSelectedPatient(PatientEntity selectedPatient) {
+        this.selectedPatient = selectedPatient;
     }
     
 }

@@ -21,7 +21,7 @@
             <div class="corps">
                 <table class="droite">
                     <tr>
-                        <td colspan="2" class="texteDr">$date</td>
+                        <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
                         <td class = "gras">Bonjour Admin</td> 
@@ -41,15 +41,15 @@
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " /></td>
                                 <td>
-                                    <select name="hospitalName" id="hospitalName">
-                                        <option value="rien" selected="selected">--liste des h&ocirc;pitaux--</option>
-                                    </select>
+                                     <p:selectOneMenu id="hosp" value="#{hospitalBean.hospital.hospitalName}" style="width:205px">
+                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="hospName" />
+                                    </p:selectOneMenu>
                                 </td>
                                 <td ><h:outputText value="Nom du p&ocirc;le : " /></td>
                                 <td>
-                                    <select name="hubName" id="hubName">
-                                        <option value="rien" selected="selected">--liste des p&ocirc;les--</option>
-                                    </select>
+                                    <p:selectOneMenu id="serv" value="#{hubBean.hub.hubName}" style="width:205px">
+                                        <f:selectItems value="#{hubBean.listHub()}" var="serviceName"/>
+                                    </p:selectOneMenu>
                                 </td>
                             </tr>
                         </table>
@@ -63,6 +63,7 @@
                             </tr>
                         </table>
                     </h:form>
+                    
                 </div>	
             </div>
 
