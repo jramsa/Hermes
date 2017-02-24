@@ -7,7 +7,6 @@ package beans;
 
 import entities.PatientEntity;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -15,11 +14,12 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.context.RequestContext;
 import sessions.PatientEntityFacade;
 import java.util.List;
+import javax.faces.bean.SessionScoped;
 import org.primefaces.event.SelectEvent;
 
 /**
  *
- * @author Jerry
+ * @author Jerry & Olivier
  */
 @Named(value = "patient")
 @ManagedBean
@@ -43,9 +43,14 @@ public class PatientBean implements Serializable {
     }
     
     public String selectPatient(SelectEvent event){
-        selectedPatient = new PatientEntity();
         this.selectedPatient = (PatientEntity) event.getObject();
-        System.out.println((PatientEntity) event.getObject());
+        if(event ==null){
+            System.out.println("salut");
+        } else {
+            System.out.println("event not null");
+        }
+        System.out.println(selectedPatient.getSocialSecurityId());
+        //System.out.println( selectedPatient.getFirsnamePatient());
         return "resultPatient";
     }
     
@@ -80,8 +85,8 @@ public class PatientBean implements Serializable {
         listPatient = facade.getPatientsByName(patient.getFirsnamePatient(),patient.getLastnamePatient());
         ArrayList<PatientEntity> tmp = new ArrayList<>();
         for(PatientEntity p:listPatient){
-            if(p.getFirsnamePatient().equals(this.patient.getFirsnamePatient()) &&
-               p.getLastnamePatient().equals(this.patient.getLastnamePatient())){
+            if(p.getFirsnamePatient().equalsIgnoreCase(this.patient.getFirsnamePatient()) &&
+               p.getLastnamePatient().equalsIgnoreCase(this.patient.getLastnamePatient())){
                 tmp.add(p);
             }
         }

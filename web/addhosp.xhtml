@@ -28,10 +28,10 @@
             <div class="corps">
                 <table class="droite">
                     <tr>
-                        <td colspan="2" class="texteDr">$date</td>
+                        <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
-                        <td class = "gras">Bonjour $nom</td> 
+                        <td class = "gras">Bonjour Admin</td> 
                         <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
                     </tr>
                 </table>
@@ -58,7 +58,7 @@
                                 </tr>
                                 <tr>
                                     <td class="texteDr"><h:outputText value="Code postal : " /></td>
-                                    <td class="texteGauche"><p:inputText id="postalAddress" value="#{hospitalBean.hospital.postalAddress}" /></td>
+                                    <td class="texteGauche"><p:inputText id="postalAddress" value="#{hospitalBean.hospital.postalAddress}" maxlength="5" /></td>
                                 </tr>
                                 <tr>
                                     <td class="texteDr"><h:outputText value="Ville : " /></td>
