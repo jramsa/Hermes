@@ -44,20 +44,20 @@
                             <td class="gras" colspan="2">Dossier m&eacute;dical $nom</td>
                         </tr>
                         <tr>
-                            <td ><br/><br/>Sexe : $sexe</td>
-                            <td ><br/><br/>Addresse :</td>
+                            <td ><br/><br/>Sexe : #{patientBean.selectedPatient.sexPatient}</td>
+                            <td ><br/><br/>Addresse : #{patientBean.selectedPatient.detailAddress}</td>
                         </tr>
                         <tr>
-                            <td >Groupe sanguin : $groupesanguin</td>
-                            <td >$detailAddress</td>
+                            <td >Groupe sanguin : #{patientBean.selectedPatient.bloodGroup}</td>
+                            <td >???</td>
                         </tr>
                         <tr>
                             <td >Date de naissance : $date</td>
-                            <td > $postalAdress $ville</td>
+                            <td > #{patientBean.selectedPatient.cityAddress} #{patientBean.selectedPatient.postalAddress}</td>
                         </tr>
                         <tr>
-                            <td >Num. s&eacute;curit&eacute; sociale : $numero</td>
-                            <td >$countryAddress</td>
+                            <td >Num. s&eacute;curit&eacute; sociale :#{patientBean.selectedPatient.socialSecurityId}</td>
+                            <td >#{patientBean.selectedPatient.countryAddress}</td>
                         </tr>
                         <tr>
                             <td colspan="2">

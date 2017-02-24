@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/nbproject/private/
+=======
 # Created by https://www.gitignore.io/api/netbeans
 
 ### NetBeans ###
@@ -9,3 +12,4 @@ nbdist/
 .nb-gradle/
 
 # End of https://www.gitignore.io/api/netbeans
+>>>>>>> origin/master
