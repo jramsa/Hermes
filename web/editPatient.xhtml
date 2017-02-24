@@ -42,7 +42,7 @@
 
                     <table class="formResult">
                         <tr>
-                            <td class="gris">#{patientBean.patient.firsnamePatient} #{patientBean.patient.lastnamePatient}</td>
+                            <td class="gris">#{patientBean.selectedPatient.firsnamePatient} #{patientBean.selectedPatient.lastnamePatient}</td>
                         </tr>
                     </table>
 
@@ -80,7 +80,7 @@
                             </tr>
                             <tr>
                                 <td ><h:outputText value="Num. s&eacute;curit&eacute; sociale : " /> </td>
-                                <td>#{patientBean.patient.socialSecurityId}</td>
+                                <td>#{patientBean.selectedPatient.socialSecurityId}</td>
                                 <td ><h:outputText value="Pays : " /> </td>
                                 <td><p:inputText id="countryAddress" value="#{patientBean.patient.countryAddress}" /></td>
                             </tr>
