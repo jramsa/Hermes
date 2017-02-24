@@ -106,6 +106,10 @@ a:visited,hover,active{
     color:white;
 }
 
+.texteNoir{
+    color:black;
+}
+
 .bouton{
     background-color:#99CCFF;
     text-align: center;

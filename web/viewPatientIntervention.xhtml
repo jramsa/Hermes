@@ -39,29 +39,31 @@
                 <div>
                     <table class = "infoPatient">
                         <tr>
-                            <td class="gras" colspan="2">Dossier m&eacute;dical $nom</td>
+                            <td class="gras" colspan="2">Dossier m&eacute;dical #{patientBean.selectedPatient.firsnamePatient} #{patientBean.selectedPatient.lastnamePatient}</td>
                         </tr>
                         <tr>
-                            <td ><br/><br/>Sexe : $sexe</td>
+                            <td ><br/><br/>Sexe : #{patientBean.selectedPatient.sexPatient}</td>
                             <td ><br/><br/>Addresse :</td>
                         </tr>
                         <tr>
-                            <td >Groupe sanguin : $groupesanguin</td>
-                            <td >$detailAddress</td>
+                            <td >Groupe sanguin : #{patientBean.selectedPatient.bloodGroup}</td>
+                            <td >#{patientBean.selectedPatient.detailAddress}</td>
                         </tr>
                         <tr>
-                            <td >Date de naissance : $date</td>
-                            <td > $postalAdress $ville</td>
+                            <td >Date de naissance : #{patientBean.selectedPatient.dateOfBirth}</td>
+                            <td > #{patientBean.selectedPatient.postalAddress} #{patientBean.selectedPatient.cityAddress}</td>
                         </tr>
                         <tr>
-                            <td >Num. s&eacute;curit&eacute; sociale : $numero</td>
-                            <td >$countryAddress</td>
+                            <td >Num. s&eacute;curit&eacute; sociale : #{patientBean.selectedPatient.socialSecurityId}</td>
+                            <td >#{patientBean.selectedPatient.countryAddress}</td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <h:commandLink action="editPatient">
-                                    <h:graphicImage value="img/crayon.png" class="logo3" />
-                                </h:commandLink>
+                                <h:form>
+                                    <h:commandLink action="editPatient">
+                                        <h:graphicImage value="img/crayon.png" class="logo3" />
+                                    </h:commandLink>
+                                </h:form>
                             </td>
                         </tr>
                     </table>

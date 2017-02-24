@@ -65,7 +65,7 @@ public class PatientEntity implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
+    @Size(min = 1, max = 13)
     @Column(name = "socialSecurityId")
     private String socialSecurityId;
     @Basic(optional = false)
@@ -214,7 +214,7 @@ public class PatientEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.PatientEntity[ socialSecurityId=" + socialSecurityId + " ]";
+        return "Patient " + socialSecurityId;
     }
     
 }

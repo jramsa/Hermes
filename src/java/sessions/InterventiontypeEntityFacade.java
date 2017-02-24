@@ -6,9 +6,11 @@
 package sessions;
 
 import entities.InterventiontypeEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,11 @@ public class InterventiontypeEntityFacade extends AbstractFacade<Interventiontyp
 
     public InterventiontypeEntityFacade() {
         super(InterventiontypeEntity.class);
+    }
+    
+    public List<InterventiontypeEntity> getlistIntervention(){
+        Query tmp = em.createNamedQuery("InterventiontypeEntity.findAll",InterventiontypeEntity.class);
+        return tmp.getResultList();   
     }
     
 }

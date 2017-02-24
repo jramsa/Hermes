@@ -5,10 +5,14 @@
  */
 package beans;
 
+import entities.InterventionEntity;
+import entities.InterventiontypeEntity;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import sessions.InterventionEntityFacade;
 import sessions.InterventiontypeEntityFacade;
 
@@ -18,6 +22,7 @@ import sessions.InterventiontypeEntityFacade;
  */
 @Named(value = "interventionBean")
 @SessionScoped
+@ManagedBean
 public class InterventionBean implements Serializable {
 
     @EJB
@@ -26,10 +31,35 @@ public class InterventionBean implements Serializable {
     @EJB
     InterventiontypeEntityFacade interventiontypeFacade;
     
+    private InterventionEntity intervention;
+    private InterventiontypeEntity interventionType;
+    
+    public InterventionEntity getIntervention() {
+        return intervention;
+    }
+
+    public void setIntervention(InterventionEntity i) {
+        this.intervention = i;
+    }
+    
+    public InterventiontypeEntity getInterventionType() {
+        return interventionType;
+    }
+
+    public void setTypeIntervention(InterventiontypeEntity t) {
+        this.interventionType = t;
+    }
+    
     /**
      * Creates a new instance of InterventionBean
      */
     public InterventionBean() {
+        intervention = new InterventionEntity();
+        interventionType = new InterventiontypeEntity();
+    }
+    
+    public List<InterventiontypeEntity> listIntervention(){
+        return interventiontypeFacade.getlistIntervention();
     }
     
 }
