@@ -50,7 +50,7 @@ public class PatientBean implements Serializable {
     }
     
     
-    public String createPatient() {ty
+    public String createPatient() {
         int created = facade.createPatient(patient);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == 1) {
@@ -80,8 +80,8 @@ public class PatientBean implements Serializable {
         listPatient = facade.getPatientsByName(patient.getFirsnamePatient(),patient.getLastnamePatient());
         ArrayList<PatientEntity> tmp = new ArrayList<>();
         for(PatientEntity p:listPatient){
-            if(p.getFirsnamePatient().equals(this.patient.getFirsnamePatient()) &&
-               p.getLastnamePatient().equals(this.patient.getLastnamePatient())){
+            if(p.getFirsnamePatient().equalsIgnoreCase(this.patient.getFirsnamePatient()) &&
+               p.getLastnamePatient().equalsIgnoreCase(this.patient.getLastnamePatient())){
                 tmp.add(p);
             }
         }
