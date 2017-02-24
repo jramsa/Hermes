@@ -109,9 +109,9 @@ public class PatientBean implements Serializable {
     
     public void updatePatient() {
         RequestContext context = RequestContext.getCurrentInstance();
-        PatientEntity h = facade.find(this.patient.getSocialSecurityId());
-        if (h != null) {
-            facade.edit(this.patient);
+        PatientEntity p = facade.find(this.selectedPatient.getSocialSecurityId());
+        if (p != null) {
+            facade.edit(this.selectedPatient);
             context.execute("swal('Success','Modifications enregistrées','success')");
         } else {
             context.execute("swal('Oups...','Modifications non enregistrées','error')");
