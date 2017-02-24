@@ -118,7 +118,7 @@ public class InterventiontypeEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.InterventiontypeEntity[ idInterventionType=" + idInterventionType + " ]";
+        return interventionName;
     }
     
 }

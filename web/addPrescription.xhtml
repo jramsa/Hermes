@@ -31,7 +31,7 @@
                         <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
-                        <td class = "gras">Bonjour $nom</td> 
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td> 
                         <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
                     </tr>
                 </table>
@@ -80,18 +80,18 @@
                         <table class="form2">
                             <tr>
                                 <td class="texteDr"><h:outputText value="Dur&eacute;e prescription : " /></td>
-                                <td class="texteGauche"><p:inputText id="" value="" /></td>
+                                <td class="texteGauche"><p:inputText id="duree" value="" /></td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Nomenclature m&eacute;dicament : " /></td>
-                                <td class="texteGauche"><p:inputText id="" value="" /></td>
+                                <td class="texteGauche"><p:inputText id="nomMedicament" value="" /></td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Posologie par jour : " /></td>
-                                <td class="texteGauche"><p:inputText id="" value="" /></td>
+                                <td class="texteGauche"><p:inputText id="posologie" value="" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><p:commandButton action="" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
+                                <td colspan="2"><p:commandButton action="enregistrer" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
                             </tr>
                             <tr>
                                 <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>

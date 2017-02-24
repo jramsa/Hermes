@@ -31,7 +31,7 @@
                         <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
-                        <td class = "gras">Bonjour $nom</td> 
+                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td>
                         <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
                     </tr>
                 </table>
@@ -81,25 +81,25 @@
                             <tr>
                                 <td class="texteDr"><h:outputText value="Type d'intervention : " /></td>
                                 <td class="texteGauche">
-                                    <select name="hospitalName" id="hospitalName">
-                                        <option value="rien" selected="selected">--liste des interventions--</option>
-                                    </select>
+                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interventionType.interventionName}" style="width:205px">
+                                        <f:selectItems value="#{interventionBean.listIntervention()}" var="interventionName" />
+                                    </p:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Date d'intervention : " /></td>
-                                <td class="texteGauche"><p:calendar id="dateInter" value="#{interventionBean.}" /></td>
+                                <td class="texteGauche"><p:calendar id="dateInter" value="#{interventionBean.intervention.dateIntervention}" /></td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Prix d'intervention : " /></td>
-                                <td class="texteGauche"><p:inputText id="prixInter" value="" /></td>
+                                <td class="texteGauche"><div class ="texteNoir"><h:outputText value="#{interventionBean.interventionType.priceIntervention}" /></div></td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Notes d'intervention : " /></td>
-                                <td class="texteGauche"><p:inputText id="note" value="" /></td>
+                                <td class="texteGauche"><p:inputText id="note" value="#{interventionBean.intervention.reportIntervention}" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><p:commandButton action="page" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
+                                <td colspan="2"><p:commandButton action="enregistrer" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
                             </tr>
                             <tr>
                                 <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
