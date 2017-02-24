@@ -36,8 +36,15 @@
 
                 <div>
                     <h:form>
-                    <p:dataTable var="p" value="#{patientBean.patientResult()}" selectionMode="single" rowKey="#{p.socialSecurityId}" selection="#{patientBean.selectedPatient}">
+                    <p:dataTable var="p" value="#{patientBean.patientResult()}" selectionMode="single" selection="#{patientBean.selectedPatient}" rowKey="#{p.socialSecurityId}">
                         <p:ajax event="rowSelect" listener="#{patientBean.selectPatient}" />  
+                         
+                        <p:column headerText="Num. s&eacute;cu. sociale">
+                            <p:outputLabel value="#{p.socialSecurityId}"></p:outputLabel>
+                            <!--<p:link outcome="resultPatient" value="#{p.socialSecurityId}">
+                                <f:param name="secuId" value="#{p}" />
+                            </p:link>-->                            
+                        </p:column>
                         <p:column headerText="Nom">
                             <p:outputLabel value="#{p.lastnamePatient}"></p:outputLabel>
                         </p:column>
@@ -61,20 +68,18 @@
                             <!--<p:link outcome="resultPatient" value="#{p.cityAddress}">
                                 <f:param name="secuId" value="#{p}" />
                             </p:link>-->
+                        </p:column>                        
+                        <!--
+                        <p:column headerText="tam">
+                        <f:param name="firstname" value="#{p.firsnamePatient}"/>
+                        <f:param name="lastname" value="#{p.lastnamePatient}"/>
+                            <p:commandButton value="Select" action="#{patientBean.setSelectedPatient()}" />
                         </p:column>
-                        
-                        <p:column headerText="Num. s&eacute;cu. sociale">
-                            <p:outputLabel value="#{p.socialSecurityId}"></p:outputLabel>
-                            <!--<p:link outcome="resultPatient" value="#{p.socialSecurityId}">
-                                <f:param name="secuId" value="#{p}" />
-                            </p:link>-->
-                        </p:column>
-                        
-                        <p:column headerText="">
-                            <p:commandButton value="Select" action="#{patientBean.selectedPatient()}" />
-                        </p:column>
-
+                            -->
                     </p:dataTable>
+                    <h:commandLink action="resultPatient">
+                    <h:graphicImage value="img/disquette.png" class="logo2" />
+                    </h:commandLink>
                    </h:form> 
                     <table class="form2">
                         <tr>
