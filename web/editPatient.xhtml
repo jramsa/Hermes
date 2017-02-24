@@ -50,16 +50,16 @@
                         <table class = "form">
                             <tr>
                                 <td ><h:outputText value="Sexe : " /></td>
-                                <td><p:selectOneMenu id="sexPatient" value="#{patientBean.patient.sexPatient}" style="width:205px">
+                                <td><p:selectOneMenu id="sexPatient" value="#{patientBean.selectedPatient.sexPatient}" style="width:205px">
                                         <f:selectItem itemLabel="Masculin" itemValue="M" />
                                         <f:selectItem itemLabel="F&eacute;minin" itemValue="F" />
                                     </p:selectOneMenu></td>
                                 <td ><h:outputText value="Num&eacute;ro et nom de rue : " /></td>
-                                <td><p:inputText id="detailAddress" value="#{patientBean.patient.detailAddress}" /></td>
+                                <td><p:inputText id="detailAddress" value="#{patientBean.selectedPatient.detailAddress}" /></td>
                             </tr>
                             <tr>
                                 <td ><h:outputText value="Groupe sanguin : " /></td>
-                                <td><p:selectOneMenu id="bloodGroup" value="#{patientBean.patient.bloodGroup}" style="width:205px">
+                                <td><p:selectOneMenu id="bloodGroup" value="#{patientBean.selectedPatient.bloodGroup}" style="width:205px">
                                         <f:selectItem itemLabel="A+" itemValue="A+" />
                                         <f:selectItem itemLabel="A-" itemValue="A-" />
                                         <f:selectItem itemLabel="B+" itemValue="B+" />
@@ -70,19 +70,19 @@
                                         <f:selectItem itemLabel="O-" itemValue="O-" />
                                     </p:selectOneMenu></td>
                                 <td ><h:outputText value="Code Postal : " /></td>
-                                <td><p:inputText id="postalAddress" value="#{patientBean.patient.postalAddress}" maxlength="5"/></td>
+                                <td><p:inputText id="postalAddress" value="#{patientBean.selectedPatient.postalAddress}" maxlength="5"/></td>
                             </tr>
                             <tr>
                                 <td ><h:outputText value="Date de naissance : " /></td>
-                                <td><p:calendar id="dateOfBirth" value="#{patientBean.patient.dateOfBirth}" /></td>
+                                <td><p:calendar id="dateOfBirth" value="#{patientBean.selectedPatient.dateOfBirth}" /></td>
                                 <td >Ville : </td>
-                                <td><p:inputText id="cityAddress" value="#{patientBean.patient.cityAddress}" /></td>
+                                <td><p:inputText id="cityAddress" value="#{patientBean.selectedPatient.cityAddress}" /></td>
                             </tr>
                             <tr>
                                 <td ><h:outputText value="Num. s&eacute;curit&eacute; sociale : " /> </td>
-                                <td>#{patientBean.selectedPatient.socialSecurityId}</td>
+                                <td class ="gras"><div class="textecentre">#{patientBean.selectedPatient.socialSecurityId}</div></td>
                                 <td ><h:outputText value="Pays : " /> </td>
-                                <td><p:inputText id="countryAddress" value="#{patientBean.patient.countryAddress}" /></td>
+                                <td><p:inputText id="countryAddress" value="#{patientBean.selectedPatient.countryAddress}" /></td>
                             </tr>
                         </table>
 

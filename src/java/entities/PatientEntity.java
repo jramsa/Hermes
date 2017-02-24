@@ -65,7 +65,7 @@ public class PatientEntity implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 13)//modifié à la main
+    @Size(min = 1, max = 13)
     @Column(name = "socialSecurityId")
     private String socialSecurityId;
     @Basic(optional = false)
