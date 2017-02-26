@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html" 
       xmlns:p="http://primefaces.org/ui" 
       xmlns:f="http://xmlns.jcp.org/jsf/core" 
-      lang="en" xml:lang="en">
+      lang="en" xml:lang="en"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>MonSI APHP</title><link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
@@ -40,29 +41,31 @@
                         <p:ajax event="rowSelect" listener="#{patientBean.selectPatient}" />  
                          
                         <p:column headerText="Num. s&eacute;cu. sociale">
-                            <p:outputLabel value="#{p.socialSecurityId}"></p:outputLabel>                           
+                            <p:outputLabel value="#{p.socialSecurityId}"></p:outputLabel>
+                      
                         </p:column>
-                        
                         <p:column headerText="Nom">
                             <p:outputLabel value="#{p.lastnamePatient}"></p:outputLabel>
                         </p:column>
 
                         <p:column headerText="Pr&eacute;nom">
                             <p:outputLabel value="#{p.firsnamePatient}"></p:outputLabel>
+
                         </p:column>
 
                         <p:column headerText="Date de naissance">
                             <p:outputLabel value="#{p.dateOfBirth}"></p:outputLabel>
+
                         </p:column>
 
                         <p:column headerText="Ville">
                             <p:outputLabel value="#{p.cityAddress}"></p:outputLabel>
-                        </p:column>
+
+                        </p:column>                        
                     </p:dataTable>
-                        
-                    <br/><br/>
-                    <p:commandButton action="resultPatient" value="Valider" class="boutonBleu2"></p:commandButton>
-                        
+                    <p:commandLink action="/faces/resultPatient.xhtml?faces-redirect=true" ajax="false">                      
+                    <p:graphicImage value="img/disquette.png" class="logo2" />
+                    </p:commandLink>
                    </h:form> 
                     <table class="form2">
                         <tr>
