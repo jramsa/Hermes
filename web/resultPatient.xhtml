@@ -37,7 +37,6 @@
                 <br/><br/>
 
                 <div>
-                    
                     <table class = "infoPatient">
                         <tr>
                             <td class="gras" colspan="2">Dossier m&eacute;dical #{patientBean.selectedPatient.firsnamePatient} #{patientBean.selectedPatient.lastnamePatient}</td>
@@ -71,7 +70,11 @@
 
                     <table class="form2">
                         <tr>
-                            <td class="boutonBleu"><p:link outcome="addPrescription" value="Ajouter une prescription" class="texteBlanc"></p:link></td>
+                                    <td class="boutonBleu">
+                                <p:link outcome="addPrescription" value="Ajouter une prescription" class="texteBlanc">
+                                    <f:param name="mailuser" value="#{userBean.user.mailUser}"/>
+                                    <f:param name="securitysocialid" value="#{patientBean.selectedPatient.socialSecurityId}"/>  
+                                </p:link></td>
                             <td class="boutonBleu"><p:link outcome="addIntervention" value="Ajouter une intervention" class="texteBlanc"></p:link></td>
                             <td class="boutonBleu"><p:link outcome="addNote" value="Ajouter une note professionnelle" class="texteBlanc"></p:link></td>
                         </tr>

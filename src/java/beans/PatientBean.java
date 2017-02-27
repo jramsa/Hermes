@@ -19,7 +19,7 @@ import org.primefaces.event.SelectEvent;
 
 /**
  *
- * @author Jerry & Olivier
+ * @author Jerry
  */
 @Named(value = "patient")
 @ManagedBean
@@ -44,13 +44,6 @@ public class PatientBean implements Serializable {
     
     public String selectPatient(SelectEvent event){
         this.selectedPatient = (PatientEntity) event.getObject();
-        if(event ==null){
-            System.out.println("salut");
-        } else {
-            System.out.println("event not null");
-        }
-        System.out.println(selectedPatient.getSocialSecurityId());
-        //System.out.println( selectedPatient.getFirsnamePatient());
         return "resultPatient";
     }
     
@@ -107,16 +100,14 @@ public class PatientBean implements Serializable {
         this.listPatient = listPatient;
     }
     
-    public String updatePatient() {
+    public void updatePatient() {
         RequestContext context = RequestContext.getCurrentInstance();
-        PatientEntity p = facade.find(this.selectedPatient.getSocialSecurityId());
-        if (p != null) {
-            facade.edit(this.selectedPatient);
+        PatientEntity h = facade.find(this.patient.getSocialSecurityId());
+        if (h != null) {
+            facade.edit(this.patient);
             context.execute("swal('Success','Modifications enregistrées','success')");
-            return "editPatient";
         } else {
             context.execute("swal('Oups...','Modifications non enregistrées','error')");
-            return "editPatient";
         }
 
     }

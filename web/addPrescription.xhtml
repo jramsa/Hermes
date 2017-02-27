@@ -16,7 +16,10 @@
     </h:head>
 
     <h:body>
-
+        <f:metadata>
+            <f:viewParam name="mailuser" value="#{prescriptionBean.mailuser}"/>
+            <f:viewParam name="securitysocialid" value="#{prescriptionBean.socialSecurityId}"/>
+        </f:metadata>
         <div class="bod">
             <header>
                 <img src="img/aphp.jpg" alt="Logo APHP" class="logo" />
@@ -31,7 +34,7 @@
                         <td colspan="2" class="texteDr">#{dateBean.date}</td>
                     </tr>
                     <tr>
-                        <td class = "gras">Bonjour <span class="souligne"><p:link outcome="infoUser" value="#{userBean.user.firstnameUser}"></p:link></span></td> 
+                        <td class = "gras">Bonjour #{userBean.user.firstnameUser}</td> 
                         <td class="boutonBleu"><p:link outcome="index" value="D&eacute;connexion" class="texteBlanc"></p:link></td>
                     </tr>
                 </table>
@@ -45,28 +48,26 @@
                         </tr>
                         <tr>
                             <td ><br/><br/>Sexe : #{patientBean.selectedPatient.sexPatient}</td>
-                            <td ><br/><br/>Addresse :</td>
+                            <td ><br/><br/>Addresse : #{patientBean.selectedPatient.detailAddress}</td>
                         </tr>
                         <tr>
                             <td >Groupe sanguin : #{patientBean.selectedPatient.bloodGroup}</td>
-                            <td >#{patientBean.selectedPatient.detailAddress}</td>
+                            <td >???</td>
                         </tr>
                         <tr>
                             <td >Date de naissance : #{patientBean.selectedPatient.dateOfBirth}</td>
-                            <td > #{patientBean.selectedPatient.postalAddress} #{patientBean.selectedPatient.cityAddress}</td>
+                            <td > #{patientBean.selectedPatient.cityAddress} #{patientBean.selectedPatient.postalAddress}</td>
                         </tr>
                         <tr>
-                            <td >Num. s&eacute;curit&eacute; sociale : #{patientBean.selectedPatient.socialSecurityId}</td>
+                            <td >Num. s&eacute;curit&eacute; sociale :#{patientBean.selectedPatient.socialSecurityId}</td>
                             <td >#{patientBean.selectedPatient.countryAddress}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">
-                                <h:form>
-                                    <h:commandLink action="editPatient">
-                                        <h:graphicImage value="img/crayon.png" class="logo3" />
-                                    </h:commandLink>
-                                </h:form>
-                            </td>
+                            <!--<td colspan="2">
+                                <h:commandLink action="editPatient">
+                                    <h:graphicImage value="img/crayon.png" class="logo3" />
+                                </h:commandLink>
+                            </td>-->
                         </tr>
                     </table>
 
@@ -80,18 +81,24 @@
                         <table class="form2">
                             <tr>
                                 <td class="texteDr"><h:outputText value="Dur&eacute;e prescription : " /></td>
-                                <td class="texteGauche"><p:inputText id="duree" value="" /></td>
+                                <td class="texteGauche">
+                                    <p:inputText id="durationPrescription" value="#{prescriptionBean.prescription.durationPrescription}" />
+                                </td>
                             </tr>
                             <tr>
-                                <td class="texteDr"><h:outputText value="Nomenclature m&eacute;dicament : " /></td>
-                                <td class="texteGauche"><p:inputText id="nomMedicament" value="" /></td>
+                                <td class="texteDr"><h:outputText value="Ordonnance medicament : " /></td>
+                                <td class="texteGauche">
+                                    <p:inputTextarea id="drugName" value="#{prescriptionBean.prescription.drugName}"/>
+                                    <h:inputHidden id="mailuser" value="#{userBean.user.mailUser}"/>
+                                    <h:inputHidden id="socialSecurityId" value="#{userBean.user.mailUser}"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Posologie par jour : " /></td>
-                                <td class="texteGauche"><p:inputText id="posologie" value="" /></td>
+                                <td class="texteGauche"><p:inputText id="quantityPrescription" value="#{prescriptionBean.prescription.quantityPrescription}" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><p:commandButton action="enregistrer" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
+                                <td colspan="2"><p:commandButton action="#{prescriptionBean.createPrescription()}" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
                             </tr>
                             <tr>
                                 <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
