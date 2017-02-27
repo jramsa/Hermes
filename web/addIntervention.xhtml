@@ -25,7 +25,7 @@
 
 
             <div class="corps">
-                
+
                 <table class="droite">
                     <tr>
                         <td colspan="2" class="texteDr">#{dateBean.date}</td>
@@ -81,7 +81,7 @@
                             <tr>
                                 <td class="texteDr"><h:outputText value="Type d'intervention : " /></td>
                                 <td class="texteGauche">
-                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interventionType.interventionName}" style="width:205px">
+                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interName}" style="width:205px">
                                         <f:selectItems value="#{interventionBean.listIntervention()}" var="interventionName" />
                                     </p:selectOneMenu>
                                 </td>
@@ -107,7 +107,7 @@
                             </tr>
                         </table>
                     </h:form>
-                    
+
                 </div>	
             </div>
 
@@ -115,6 +115,6 @@
                 2017 Copyright Olympus - Aide - Contact
             </footer>
         </div>
-        
+
     </h:body>
 </html>

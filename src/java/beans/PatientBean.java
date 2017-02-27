@@ -60,9 +60,7 @@ public class PatientBean implements Serializable {
             return "nouveauPatient";
         }
     }
-    
-    
-    
+      
     public PatientEntity getPatient() {
         return patient;
     }
