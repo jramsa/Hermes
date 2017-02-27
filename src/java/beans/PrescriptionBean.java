@@ -83,7 +83,7 @@ public class PrescriptionBean implements Serializable {
         setDate();
         prescription.setIdPrescription(ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE));
         boolean created = facadePrescription.createPrescription(prescription);
-        //facadeHasPrescription.createHasPrescription(socialSecurityId,prescription.getIdPrescription(), mailuser);
+        facadeHasPrescription.createHasPrescription(socialSecurityId,prescription.getIdPrescription(), mailuser);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created==true){
             context.execute("swal('Félicitations','Prescription créée','success')");
