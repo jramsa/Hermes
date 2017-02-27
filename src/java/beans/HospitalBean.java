@@ -81,8 +81,7 @@ public class HospitalBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         if (deleted == true) {
             context.execute("swal('Félicitations','Hôpital supprimé','success')");
-            this.hospital = new HospitalEntity();
-            return "admin";//removehosp
+            return "removehosp";
         } else {
             context.execute("swal('Oups...','Suppression impossible','error')");
             return "removehosp";

@@ -35,5 +35,11 @@ public class InterventiontypeEntityFacade extends AbstractFacade<Interventiontyp
         Query tmp = em.createNamedQuery("InterventiontypeEntity.findAll",InterventiontypeEntity.class);
         return tmp.getResultList();   
     }
+    
+    public InterventiontypeEntity findInterventionByName(String intervention){
+        Query tmp = em.createNamedQuery("InterventiontypeEntity.findByInterventionName",InterventiontypeEntity.class);
+        tmp.setParameter("interventionName", intervention);
+        return (InterventiontypeEntity)tmp.getSingleResult();
+    }
        
 }

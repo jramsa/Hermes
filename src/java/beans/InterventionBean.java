@@ -35,6 +35,7 @@ public class InterventionBean implements Serializable {
     
     private InterventionEntity intervention;
     private InterventiontypeEntity interventionType;
+    private String interName;
     
     public InterventionEntity getIntervention() {
         return intervention;
@@ -71,9 +72,9 @@ public class InterventionBean implements Serializable {
     
     public String createIntervention() {
         setDate();
-        interventionType.setIdInterventionType(1);//a changer pour recuperer l'id du type de l'inter
+        InterventiontypeEntity typeInter = interventiontypeFacade.findInterventionByName(interName);
         intervention.setIdIntervention(ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE));
-        intervention.setIdInterventionType(interventionType);
+        intervention.setIdInterventionType(typeInter);
         boolean created = interventionFacade.createIntervention(intervention);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created==true){
@@ -86,4 +87,18 @@ public class InterventionBean implements Serializable {
             return "resultPatient";
         }
     }   
+
+    /**
+     * @return the interName
+     */
+    public String getInterName() {
+        return interName;
+    }
+
+    /**
+     * @param interName the interName to set
+     */
+    public void setInterName(String interName) {
+        this.interName = interName;
+    }
 }

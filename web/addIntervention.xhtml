@@ -16,6 +16,10 @@
     </h:head>
 
     <h:body>
+        <f:metadata>
+ +            <f:viewParam name="mailuser" value="#{prescriptionBean.mailuser}"/>
+ +            <f:viewParam name="securitysocialid" value="#{prescriptionBean.socialSecurityId}"/>
+ +        </f:metadata>
 
         <div class="bod">
             <header>
@@ -81,7 +85,7 @@
                             <tr>
                                 <td class="texteDr"><h:outputText value="Type d'intervention : " /></td>
                                 <td class="texteGauche">
-                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interventionType.interventionName}" style="width:205px">
+                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interName}" style="width:205px">
                                         <f:selectItems value="#{interventionBean.listIntervention()}" var="interventionName" />
                                     </p:selectOneMenu>
                                 </td>
