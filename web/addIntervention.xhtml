@@ -16,10 +16,6 @@
     </h:head>
 
     <h:body>
-        <f:metadata>
- +            <f:viewParam name="mailuser" value="#{prescriptionBean.mailuser}"/>
- +            <f:viewParam name="securitysocialid" value="#{prescriptionBean.socialSecurityId}"/>
- +        </f:metadata>
 
         <div class="bod">
             <header>
@@ -29,7 +25,7 @@
 
 
             <div class="corps">
-                
+
                 <table class="droite">
                     <tr>
                         <td colspan="2" class="texteDr">#{dateBean.date}</td>
@@ -111,7 +107,7 @@
                             </tr>
                         </table>
                     </h:form>
-                    
+
                 </div>	
             </div>
 
@@ -119,6 +115,6 @@
                 2017 Copyright Olympus - Aide - Contact
             </footer>
         </div>
-        
+
     </h:body>
 </html>

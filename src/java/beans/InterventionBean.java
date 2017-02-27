@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import org.primefaces.context.RequestContext;
+import sessions.HasInterventionEntityFacade;
 import sessions.InterventionEntityFacade;
 import sessions.InterventiontypeEntityFacade;
 
@@ -32,6 +34,15 @@ public class InterventionBean implements Serializable {
     
     @EJB
     InterventiontypeEntityFacade interventiontypeFacade;
+    
+    @EJB
+    HasInterventionEntityFacade hasPrescriptionFacade;
+    
+    @ManagedProperty(value="#{userBean}")
+    private UserBean user;
+    
+    @ManagedProperty(value="#{patientBean}")
+    private PatientBean patient;
     
     private InterventionEntity intervention;
     private InterventiontypeEntity interventionType;
@@ -76,6 +87,7 @@ public class InterventionBean implements Serializable {
         intervention.setIdIntervention(ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE));
         intervention.setIdInterventionType(typeInter);
         boolean created = interventionFacade.createIntervention(intervention);
+        hasPrescriptionFacade.createHasIntervention(getPatient().getSelectedPatient().getSocialSecurityId(),intervention.getIdIntervention(), getUser().getUser().getMailUser());
         RequestContext context = RequestContext.getCurrentInstance();
         if (created==true){
             context.execute("swal('Félicitations','Intervention créée','success')");
@@ -100,5 +112,33 @@ public class InterventionBean implements Serializable {
      */
     public void setInterName(String interName) {
         this.interName = interName;
+    }
+
+    /**
+     * @return the user
+     */
+    public UserBean getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the patient
+     */
+    public PatientBean getPatient() {
+        return patient;
+    }
+
+    /**
+     * @param patient the patient to set
+     */
+    public void setPatient(PatientBean patient) {
+        this.patient = patient;
     }
 }
