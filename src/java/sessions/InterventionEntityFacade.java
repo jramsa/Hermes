@@ -28,5 +28,4 @@ public class InterventionEntityFacade extends AbstractFacade<InterventionEntity>
     public InterventionEntityFacade() {
         super(InterventionEntity.class);
     }
-    
 }

@@ -109,7 +109,6 @@ public class PatientBean implements Serializable {
         } else {
             context.execute("swal('Oups...','Modifications non enregistrées','error')");
         }
-
     }
 
     /**

@@ -11,8 +11,10 @@ import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.primefaces.context.RequestContext;
 import sessions.InterventionEntityFacade;
 import sessions.InterventiontypeEntityFacade;
 
@@ -49,6 +51,7 @@ public class InterventionBean implements Serializable {
     public void setTypeIntervention(InterventiontypeEntity t) {
         this.interventionType = t;
     }
+    
     
     /**
      * Creates a new instance of InterventionBean
