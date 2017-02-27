@@ -28,4 +28,10 @@ public class InterventionEntityFacade extends AbstractFacade<InterventionEntity>
     public InterventionEntityFacade() {
         super(InterventionEntity.class);
     }
+    
+    public boolean createIntervention(InterventionEntity intervention){
+        InterventionEntity i = em.find(InterventionEntity.class, intervention.getIdIntervention());
+        em.persist(intervention);
+        return true;        
+    }
 }

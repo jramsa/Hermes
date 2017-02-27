@@ -65,4 +65,25 @@ public class InterventionBean implements Serializable {
         return interventiontypeFacade.getlistIntervention();
     }
     
+    public void setDate(){      
+        intervention.setDateEdition(new java.util.Date());
+    }
+    
+    public String createIntervention() {
+        setDate();
+        interventionType.setIdInterventionType(1);//a changer pour recuperer l'id du type de l'inter
+        intervention.setIdIntervention(ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE));
+        intervention.setIdInterventionType(interventionType);
+        boolean created = interventionFacade.createIntervention(intervention);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (created==true){
+            context.execute("swal('Félicitations','Intervention créée','success')");
+            this.intervention = new InterventionEntity();
+            return "resultPatient";    
+        }
+        else {
+            context.execute("swal('Oups...','Intervention non créée','error')");
+            return "resultPatient";
+        }
+    }   
 }

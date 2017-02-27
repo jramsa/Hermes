@@ -99,7 +99,7 @@
                                 <td class="texteGauche"><p:inputText id="note" value="#{interventionBean.intervention.reportIntervention}" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><p:commandButton action="e" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
+                                <td colspan="2"><p:commandButton action="#{interventionBean.createIntervention()}" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
                             </tr>
                             <tr>
                                 <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>

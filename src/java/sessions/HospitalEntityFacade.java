@@ -58,5 +58,4 @@ public class HospitalEntityFacade extends AbstractFacade<HospitalEntity> {
             return false;
         }
     }
-    
 }
