@@ -141,5 +141,9 @@ public class InterventionEntity implements Serializable {
     public void setIdInterventionType(InterventiontypeEntity idInterventionType) {
         this.idInterventionType = idInterventionType;
     }
+
+    public void setIdPrescription(int nextInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
