@@ -6,6 +6,7 @@
 package beans;
 
 import entities.HospitalEntity;
+import entities.HubEntity;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import javax.ejb.EJB;
 import org.primefaces.context.RequestContext;
 import sessions.HospitalEntityFacade;
 import java.util.List;
+import sessions.HubEntityFacade;
 
 /**
  *
@@ -23,7 +25,10 @@ import java.util.List;
 public class HospitalBean implements Serializable {
 
     @EJB
-    HospitalEntityFacade facade;
+    HospitalEntityFacade hospitalFacade;
+    
+    @EJB     
+    HubEntityFacade hubFacade;
     
     private HospitalEntity hospital;
     
@@ -35,14 +40,14 @@ public class HospitalBean implements Serializable {
     }
     
     public HospitalEntityFacade getFacade() {
-        return facade;
+        return hospitalFacade;
     }
 
     /**
      * @param facade the facade to set
      */
     public void setFacade(HospitalEntityFacade facade) {
-        this.facade = facade;
+        this.hospitalFacade = facade;
     }
 
     public HospitalEntity getHospital() {
@@ -54,7 +59,7 @@ public class HospitalBean implements Serializable {
     }
 
     public String createHospital() {
-        boolean created = facade.creatHospital(hospital);
+        boolean created = hospitalFacade.creatHospital(hospital);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == true) {
             context.execute("swal('Félicitations','Hôpital créé','success')");
@@ -68,19 +73,19 @@ public class HospitalBean implements Serializable {
     }
     
     public void updateHospital() {
-        HospitalEntity h = facade.find(this.hospital.getHospitalName());
+        HospitalEntity h = hospitalFacade.find(this.hospital.getHospitalName());
         if (h != null) {
-            facade.edit(this.hospital);
+            hospitalFacade.edit(this.hospital);
         }
     }
     
     public List<HospitalEntity> listHospital(){
-        return facade.getlistHospital();
+        return hospitalFacade.getlistHospital();
     }
     
     public String removeHospital(){
-        HospitalEntity hosp = facade.find(this.hospital.getHospitalName());
-        boolean deleted = facade.deleteHosp(hosp);
+        HospitalEntity hosp = hospitalFacade.find(this.hospital.getHospitalName());
+        boolean deleted = hospitalFacade.deleteHosp(hosp);
         RequestContext context = RequestContext.getCurrentInstance();
         if (deleted == true) {
             context.execute("swal('Félicitations','Hôpital supprimé','success')");
@@ -120,7 +125,23 @@ public class HospitalBean implements Serializable {
     }
     
     public String addHubToHospital(){
-        return "";
+        HospitalEntity hospTmp = hospitalFacade.findHospitalByName(nameHosp);
+        HubEntity hubTmp = hubFacade.findHubByName(nameHub);
+        
+        //a modifier
+        //hospitalFacade.addHubToHosp(nameHosp, nameHub, hubTmp, hospTmp);
+        
+        //boolean created = hospitalFacade.createaddHubToHospital(intervention);
+        //hasPrescriptionFacade.createHasIntervention(getPatient().getSelectedPatient().getSocialSecurityId(),intervention.getIdIntervention(), getUser().getUser().getMailUser());
+        //RequestContext context = RequestContext.getCurrentInstance();
+        //if (created==true){
+        //context.execute("swal('Félicitations','Pôle ajouté','success')");
+        return "addhub";    
+        //}
+        /*else {
+            context.execute("swal('Oups...','Pôle non ajouté','error')");
+            return "addhub";
+        }*/
     }
 
 }

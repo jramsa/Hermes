@@ -6,6 +6,7 @@
 package sessions;
 
 import entities.HospitalEntity;
+import entities.HubEntity;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,32 +31,50 @@ public class HospitalEntityFacade extends AbstractFacade<HospitalEntity> {
     public HospitalEntityFacade() {
         super(HospitalEntity.class);
     }
-    
-    public boolean creatHospital(HospitalEntity h){
+
+    public boolean creatHospital(HospitalEntity h) {
         HospitalEntity hospital = em.find(HospitalEntity.class, h.getHospitalName());
-        if(hospital == null ){
-                   em.persist(h);
-                   return true; 
-        }
-        else{
+        if (hospital == null) {
+            em.persist(h);
+            return true;
+        } else {
             return false;
         }
     }
-    
-    public List<HospitalEntity> getlistHospital(){
-        Query tmp = em.createNamedQuery("HospitalEntity.findAll",HospitalEntity.class);
-        return tmp.getResultList();   
+
+    public List<HospitalEntity> getlistHospital() {
+        Query tmp = em.createNamedQuery("HospitalEntity.findAll", HospitalEntity.class);
+        return tmp.getResultList();
     }
-    
-    public boolean deleteHosp(HospitalEntity h){
+
+    public boolean deleteHosp(HospitalEntity h) {
         HospitalEntity hospital = em.find(HospitalEntity.class, h.getHospitalName());
-        if(hospital != null){
+        if (hospital != null) {
             //hospital = (HospitalEntity)em.merge(hospital);
             em.remove(hospital);
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
+
+    public HospitalEntity findHospitalByName(String name) {
+        Query tmp = em.createNamedQuery("HospitalEntity.findByHospitalName", HospitalEntity.class);
+        tmp.setParameter("hospitalName", name);
+        return (HospitalEntity) tmp.getSingleResult();
+    }
+
+    /*public void addHubToHosp(String hospitalName, String hubName, HubEntity hub, HospitalEntity hosp) {
+        Query tmp1 = em.createNamedQuery("HospitalEntity.findByHospitalName",HospitalEntity.class);
+        tmp1.setParameter("hospitalName", hospitalName);
+        hub.setHospitalEntityList(tmp1.getResultList());
+        
+        Query tmp2 = em.createNamedQuery("HubEntity.findByHubName",HubEntity.class);
+        tmp2.setParameter("hubName", hubName);
+        hosp.setHubEntityList(tmp2.getResultList());
+
+        em.persist(hosp);
+        em.persist(hub);
+        em.close();
+    }*/
 }
