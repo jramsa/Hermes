@@ -40,5 +40,17 @@ public class NoteTypeEntityFacade extends AbstractFacade<NoteTypeEntity> {
         Query tmp = em.createNamedQuery("NoteTypeEntity.findByNoteName",NoteTypeEntity.class);
         tmp.setParameter("noteName", note);
         return (NoteTypeEntity)tmp.getSingleResult();
-    }    
+    }   
+    
+    public List<NoteTypeEntity> getListNoteType(){
+        Query tmp = em.createNamedQuery("NoteTypeEntity.findAll",NoteTypeEntity.class);
+        return tmp.getResultList();   
+    }
+    
+    //a corriger
+    public List<Object[]> getListInterventionMed(String mail){
+        Query query = em.createQuery("SELECT n.idNote, n.dateNote, n.note"+" FROM NoteEntity n");
+        List <Object[]> list = query.getResultList();
+        return list; 
+    }
 }

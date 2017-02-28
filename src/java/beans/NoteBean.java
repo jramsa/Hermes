@@ -10,6 +10,7 @@ import entities.NoteTypeEntity;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedProperty;
@@ -54,6 +55,27 @@ public class NoteBean implements Serializable {
     public NoteBean() {
         noteType = new NoteTypeEntity(); 
         note = new NoteEntity();
+    }
+    
+    private List <NoteTypeEntity> listNoteType = new ArrayList<>();
+    public List<NoteTypeEntity> aListNoteType(){
+        setList(noteTypeFacade.getListNoteType());
+        ArrayList<NoteTypeEntity> tmp = new ArrayList<>();
+        for(NoteTypeEntity p:getList()){
+                tmp.add(p);
+        }
+        return tmp;
+    }
+    
+    private List <Object[]> listNoteUser = new ArrayList<>();
+    public List<Object[]> aListNoteView(){
+        setListNoteUser(noteTypeFacade.getListInterventionMed(getUser().getUser().getMailUser()));
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o :getListNoteUser()){
+                tmp.add(o);
+        }
+        return tmp;
+        
     }
     
     public List<NoteTypeEntity> listNotes(){
@@ -142,6 +164,34 @@ public class NoteBean implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the list
+     */
+    public List <NoteTypeEntity> getList() {
+        return listNoteType;
+    }
+
+    /**
+     * @param list the list to set
+     */
+    public void setList(List <NoteTypeEntity> list) {
+        this.listNoteType = list;
+    }
+
+    /**
+     * @return the listNoteUser
+     */
+    public List <Object[]> getListNoteUser() {
+        return listNoteUser;
+    }
+
+    /**
+     * @param listNoteUser the listNoteUser to set
+     */
+    public void setListNoteUser(List <Object[]> listNoteUser) {
+        this.listNoteUser = listNoteUser;
     }
     
 }
