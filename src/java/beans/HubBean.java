@@ -25,7 +25,7 @@ import sessions.HubEntityFacade;
 public class HubBean implements Serializable {
     
     @EJB     
-    HubEntityFacade facade;
+    HubEntityFacade hubFacade;
     
     private HubEntity hub;
     private List<HubEntity> listHub;
@@ -51,7 +51,7 @@ public class HubBean implements Serializable {
     }
     
     public List<HubEntity> listHub(){
-        return facade.getlistHub();
+        return hubFacade.getlistHub();
     }
     
 }

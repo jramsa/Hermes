@@ -26,6 +26,9 @@ public class HospitalBean implements Serializable {
     HospitalEntityFacade facade;
     
     private HospitalEntity hospital;
+    
+    private String nameHub;
+    private String nameHosp;
 
     public HospitalBean() {
         hospital = new HospitalEntity();
@@ -86,6 +89,38 @@ public class HospitalBean implements Serializable {
             context.execute("swal('Oups...','Suppression impossible','error')");
             return "removehosp";
         }
+    }
+
+    /**
+     * @return the nameHub
+     */
+    public String getNameHub() {
+        return nameHub;
+    }
+
+    /**
+     * @param nameHub the nameHub to set
+     */
+    public void setNameHub(String nameHub) {
+        this.nameHub = nameHub;
+    }
+
+    /**
+     * @return the nameHosp
+     */
+    public String getNameHosp() {
+        return nameHosp;
+    }
+
+    /**
+     * @param nameHosp the nameHosp to set
+     */
+    public void setNameHosp(String nameHosp) {
+        this.nameHosp = nameHosp;
+    }
+    
+    public String addHubToHospital(){
+        return "";
     }
 
 }

@@ -41,13 +41,13 @@
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " /></td>
                                 <td>
-                                     <p:selectOneMenu id="hosp" value="#{hospitalBean.hospital.hospitalName}" style="width:205px">
+                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.nameHosp}" style="width:205px">
                                         <f:selectItems value="#{hospitalBean.listHospital()}" var="hospName" />
                                     </p:selectOneMenu>
                                 </td>
                                 <td ><h:outputText value="Nom du p&ocirc;le : " /></td>
                                 <td>
-                                    <p:selectOneMenu id="serv" value="#{hubBean.hub.hubName}" style="width:205px">
+                                    <p:selectOneMenu id="serv" value="#{hospitalBean.nameHub}" style="width:205px">
                                         <f:selectItems value="#{hubBean.listHub()}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -56,7 +56,7 @@
 
                         <table class="form2">
                             <tr>
-                                <td><p:commandButton action="e" value="Enregistrer" class="boutonBleu2" /></td>
+                                <td><p:commandButton action="#{hospitalBean.addHubToHospital()}" value="Enregistrer" class="boutonBleu2" /></td>
                             </tr>
                             <tr>
                                 <td><p:link outcome="admin" value="&lt; Retour Page pr&eacute;c&eacute;dente" class="texteBleu"></p:link></td>
