@@ -16,10 +16,6 @@
     </h:head>
 
     <h:body>
-         <f:metadata>
-             +            <f:viewParam name="mailuser" value="#{prescriptionBean.mailuser}"/>
-             +            <f:viewParam name="securitysocialid" value="#{prescriptionBean.socialSecurityId}"/>
- +        </f:metadata>
 
         <div class="bod">
             <header>
@@ -90,11 +86,7 @@
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Ordonnance medicament : " /></td>
-                                <td class="texteGauche">
-                                    <p:inputTextarea id="drugName" value="#{prescriptionBean.prescription.drugName}" style="width:425px"/>
-                                    <h:inputHidden id="mailuser" value="#{userBean.user.mailUser}"/>
-                                    <h:inputHidden id="socialSecurityId" value="#{userBean.user.mailUser}"/>
-                                </td>
+                                <td class="texteGauche"><p:inputTextarea id="drugName" value="#{prescriptionBean.prescription.drugName}" style="width:425px"/></td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Posologie : " /></td>
