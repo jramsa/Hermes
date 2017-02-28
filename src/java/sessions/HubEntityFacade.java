@@ -36,4 +36,10 @@ public class HubEntityFacade extends AbstractFacade<HubEntity> {
         return tmp.getResultList();   
     }
     
+    public HubEntity findHubByName(String name){
+        Query tmp = em.createNamedQuery("HubEntity.findByHubName",HubEntity.class);
+        tmp.setParameter("hubName", name);
+        return (HubEntity)tmp.getSingleResult();
+    }
+    
 }
