@@ -7,7 +7,7 @@ package beans;
 
 import entities.PrescriptionEntity;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -33,33 +33,14 @@ public class PrescriptionBean implements Serializable {
     @EJB
     HasprescriptionEntityFacade facadeHasPrescription;
     
-    private PrescriptionEntity prescription;    
-    
-    private String mailuser;    
-    private String socialSecurityId;
+    private PrescriptionEntity prescription;
     
     @ManagedProperty(value="#{userBean}")
     private UserBean user;
     
     @ManagedProperty(value="#{patientBean}")
     private PatientBean patient;
-    
-    
-    public String getMailuser() {
-        return mailuser;
-    }
-
-    public String getSocialSecurityId() {
-        return socialSecurityId;
-    }
-   
-    public void setMailuser(String mailuser) {
-        this.mailuser = mailuser;
-    }
-
-    public void setSocialSecurityId(String socialSecurityId) {
-        this.socialSecurityId = socialSecurityId;
-    }
+  
     /**
      * Creates a new instance of PrescriptionBean
      */
@@ -83,7 +64,7 @@ public class PrescriptionBean implements Serializable {
         setDate();
         prescription.setIdPrescription(ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE));
         boolean created = facadePrescription.createPrescription(prescription);
-        facadeHasPrescription.createHasPrescription(socialSecurityId,prescription.getIdPrescription(), mailuser);
+        facadeHasPrescription.createHasPrescription(getPatient().getSelectedPatient().getSocialSecurityId(),prescription.getIdPrescription(),getUser().getUser().getMailUser());
         RequestContext context = RequestContext.getCurrentInstance();
         if (created==true){
             context.execute("swal('Félicitations','Prescription créée','success')");
@@ -94,5 +75,33 @@ public class PrescriptionBean implements Serializable {
             context.execute("swal('Oups...','Prescription non créée','error')");
             return "resultPatient";
         }
+    }
+
+    /**
+     * @return the user
+     */
+    public UserBean getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the patient
+     */
+    public PatientBean getPatient() {
+        return patient;
+    }
+
+    /**
+     * @param patient the patient to set
+     */
+    public void setPatient(PatientBean patient) {
+        this.patient = patient;
     }
 }
