@@ -85,20 +85,20 @@
                             <tr>
                                 <td class="texteDr"><h:outputText value="Dur&eacute;e prescription : " /></td>
                                 <td class="texteGauche">
-                                    <p:inputText id="durationPrescription" value="#{prescriptionBean.prescription.durationPrescription}" />
+                                    <p:inputText id="durationPrescription" value="#{prescriptionBean.prescription.durationPrescription}" style="width:425px" />
                                 </td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Ordonnance medicament : " /></td>
                                 <td class="texteGauche">
-                                    <p:inputTextarea id="drugName" value="#{prescriptionBean.prescription.drugName}"/>
+                                    <p:inputTextarea id="drugName" value="#{prescriptionBean.prescription.drugName}" style="width:425px"/>
                                     <h:inputHidden id="mailuser" value="#{userBean.user.mailUser}"/>
                                     <h:inputHidden id="socialSecurityId" value="#{userBean.user.mailUser}"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="texteDr"><h:outputText value="Posologie par jour : " /></td>
-                                <td class="texteGauche"><p:inputText id="quantityPrescription" value="#{prescriptionBean.prescription.quantityPrescription}" /></td>
+                                <td class="texteDr"><h:outputText value="Posologie : " /></td>
+                                <td class="texteGauche"><p:inputText id="quantityPrescription" value="#{prescriptionBean.prescription.quantityPrescription}" style="width:425px" /></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><p:commandButton action="#{prescriptionBean.createPrescription()}" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>

@@ -81,22 +81,22 @@
                             <tr>
                                 <td class="texteDr"><h:outputText value="Type d'intervention : " /></td>
                                 <td class="texteGauche">
-                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interName}" style="width:205px">
+                                    <p:selectOneMenu id="typeInter" value="#{interventionBean.interName}" style="width:425px">
                                         <f:selectItems value="#{interventionBean.listIntervention()}" var="interventionName" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="texteDr"><h:outputText value="Date d'intervention : " /></td>
-                                <td class="texteGauche"><p:calendar id="dateInter" value="#{interventionBean.intervention.dateIntervention}" /></td>
+                                <td class="texteGauche"><p:calendar id="dateInter" value="#{interventionBean.intervention.dateIntervention}" style="width:425px" /></td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td class="texteDr"><h:outputText value="Prix d'intervention : " /></td>
                                 <td class="texteGauche"><div class ="texteNoir"><h:outputText value="#{interventionBean.interventionType.priceIntervention}" /></div></td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td class="texteDr"><h:outputText value="Notes d'intervention : " /></td>
-                                <td class="texteGauche"><p:inputText id="note" value="#{interventionBean.intervention.reportIntervention}" /></td>
+                                <td class="texteGauche"><p:inputTextarea id="note" value="#{interventionBean.intervention.reportIntervention}" style="width:425px"/></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><p:commandButton action="#{interventionBean.createIntervention()}" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
