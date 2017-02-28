@@ -6,12 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -40,6 +43,7 @@ public class NoteTypeEntity implements Serializable {
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "noteName")
+    
     private String noteName;
 
     public NoteTypeEntity() {
@@ -92,7 +96,7 @@ public class NoteTypeEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.NoteTypeEntity[ idNoteType=" + idNoteType + " ]";
+        return noteName;
     }
     
 }

@@ -6,9 +6,11 @@
 package sessions;
 
 import entities.NoteTypeEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,14 @@ public class NoteTypeEntityFacade extends AbstractFacade<NoteTypeEntity> {
         super(NoteTypeEntity.class);
     }
     
+    public List<NoteTypeEntity> getlistNotes(){
+        Query tmp = em.createNamedQuery("NoteTypeEntity.findAll",NoteTypeEntity.class);
+        return tmp.getResultList();   
+    }
+    
+    public NoteTypeEntity findNoteByName(String note){
+        Query tmp = em.createNamedQuery("NoteTypeEntity.findByNoteName",NoteTypeEntity.class);
+        tmp.setParameter("noteName", note);
+        return (NoteTypeEntity)tmp.getSingleResult();
+    }    
 }

@@ -81,17 +81,17 @@
                             <tr>
                                 <td class="texteDr">type de la note :</td>
                                 <td class="texteGauche">
-                                    <p:selectOneMenu id="typeNote" value="truc" style="width:425px">
-                                        <f:selectItems value="truc" var="typeNote" />
+                                    <p:selectOneMenu id="typeNotes" value="#{noteBean.name}" style="width:425px">
+                                        <f:selectItems value="#{noteBean.listNotes()}" var="typeNote" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="texteDr">Notes :</td>
-                                <td class="texteGauche"><p:inputTextarea rows="10" cols="50" completeMethod="valeur" queryDelay="750" minQueryLength="1"/></td>
+                                <td class="texteGauche"><p:inputTextarea rows="10" cols="50" value="#{noteBean.note.note}" queryDelay="750" minQueryLength="1"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><p:commandButton action="enregistrer" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
+                                <td colspan="2"><p:commandButton action="#{noteBean.createNote()}" value="Enregistrer" class="boutonBleu2" ></p:commandButton></td>
                             </tr>
                             <tr>
                                 <td><br/><p:link outcome="accueil" value="&lt; Retour Accueil" class="texteBleu"></p:link></td>
