@@ -28,6 +28,8 @@ public class UserBean implements Serializable{
     
     private UserEntity user;
     
+    private String role;
+    
     public UserBean() {
         user = new UserEntity();
     }
@@ -97,5 +99,19 @@ public class UserBean implements Serializable{
      */
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
     }
 }

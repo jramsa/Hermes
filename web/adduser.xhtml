@@ -59,6 +59,15 @@
                                 <td class="texteDr"><h:outputText value="Mot de passe : " /></td>
                                 <td><p:password id="password" value="#{userBean.user.password}" /></td>
                             </tr>
+                            <tr>
+                                <td class="texteDr"><h:outputText value="R&ocirc;le : " /></td>
+                                <td>
+                                    <p:selectOneMenu id="role" value="#{userBean.role}" style="width:205px">
+                                        <f:selectItem itemLabel="Masculin" itemValue="M" />
+                                        <f:selectItem itemLabel="F&eacute;minin" itemValue="F" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
                         </table>
 
                         <table class="form2">
