@@ -74,6 +74,16 @@ public class InterventionBean implements Serializable {
         }
         return tmp;    
     }
+    
+    private List <Object[]> listInterPatient = new ArrayList<>();
+    public List<Object[]> aListPatientInterView(){
+        listInterPatient = interventionFacade.getListInterPatient(getPatient().getSelectedPatient().getSocialSecurityId());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : getListInterPatient()){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
   
     
     /**
@@ -151,5 +161,19 @@ public class InterventionBean implements Serializable {
      */
     public void setPatient(PatientBean patient) {
         this.patient = patient;
+    }
+
+    /**
+     * @return the listInterPatient
+     */
+    public List <Object[]> getListInterPatient() {
+        return listInterPatient;
+    }
+
+    /**
+     * @param listInterPatient the listInterPatient to set
+     */
+    public void setListInterPatient(List <Object[]> listInterPatient) {
+        this.listInterPatient = listInterPatient;
     }
 }

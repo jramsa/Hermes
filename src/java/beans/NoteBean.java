@@ -69,13 +69,22 @@ public class NoteBean implements Serializable {
     
     private List <Object[]> listNoteUser = new ArrayList<>();
     public List<Object[]> aListNoteView(){
-        setListNoteUser(noteTypeFacade.getListInterventionMed(getUser().getUser().getMailUser()));
+        setListNoteUser(noteTypeFacade.getListNoteUser(getUser().getUser().getMailUser()));
         ArrayList<Object[]> tmp = new ArrayList<>();
         for(Object[] o :getListNoteUser()){
                 tmp.add(o);
         }
-        return tmp;
-        
+        return tmp;  
+    }
+    
+    private List <Object[]> listNotePatient = new ArrayList<>();
+    public List<Object[]> aListPatientNoteView(){
+        listNotePatient = noteTypeFacade.getListNotePatient(getPatient().getSelectedPatient().getSocialSecurityId());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o :listNotePatient){
+                tmp.add(o);
+        }
+        return tmp;  
     }
     
     public List<NoteTypeEntity> listNotes(){

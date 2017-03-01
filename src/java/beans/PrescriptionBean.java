@@ -52,6 +52,16 @@ public class PrescriptionBean implements Serializable {
         }
         return tmp;    
     }
+    
+    private List <Object[]> listPrescriptionPatient = new ArrayList<>();
+    public List<Object[]> aListPatientPrescriptionView(){
+        listPrescriptionPatient = facadePrescription.getListPrescriptionPatient(getPatient().getSelectedPatient().getSocialSecurityId());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : listPrescriptionPatient){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
   
     /**
      * Creates a new instance of PrescriptionBean

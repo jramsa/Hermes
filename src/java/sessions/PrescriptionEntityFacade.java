@@ -38,7 +38,13 @@ public class PrescriptionEntityFacade extends AbstractFacade<PrescriptionEntity>
     }
     
     public List<Object[]> getListPrescriptionMed(String mail){
-        Query query = em.createNativeQuery("SELECT pr.idPrescription, p.firsnamePatient,p.lastnamePatient,pr.datePrescription, pr.durationPrescription,pr.drugName,pr.quantityPrescription FROM Prescription pr,Patient p, hasPrescription h, User u WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idPrescription= pr.idPrescription AND u.mailUser ='"+ mail +"'");
+        Query query = em.createNativeQuery("SELECT pr.idPrescription, p.firsnamePatient,p.lastnamePatient,pr.datePrescription, pr.durationPrescription,pr.drugName,pr.quantityPrescription FROM Prescription pr,Patient p, hasPrescription h, User u WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idPrescription= pr.idPrescription AND u.mailUser ='"+ mail +"' ORDER BY pr.datePrescription DESC");
+        List <Object[]> list = query.getResultList();
+        return list; 
+    }
+    
+    public List<Object[]> getListPrescriptionPatient(String secu){
+        Query query = em.createNativeQuery("SELECT pr.idPrescription,pr.durationPrescription,pr.drugName,pr.quantityPrescription, pr.datePrescription, u.firstnameUser,u.lastnameUser FROM Prescription pr,Patient p, hasPrescription h, User u WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idPrescription= pr.idPrescription AND p.socialSecurityId ="+ secu +" ORDER BY pr.datePrescription DESC");
         List <Object[]> list = query.getResultList();
         return list; 
     }
