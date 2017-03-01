@@ -11,7 +11,8 @@
         <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
         <style>
         </style>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <h:outputStylesheet library="css" name="sweetalert.css" />
+        <h:outputScript library="js" name="sweetalert.min.js" /> 
     </h:head>
 
     <body>
@@ -64,7 +65,7 @@
 
                         <table class="form2">
                             <tr>
-                                <td><p:commandButton action="e" value="Enregistrer" class="boutonBleu2" /></td>
+                                <td><p:commandButton action="#{hubBean.removeHubToHospital()}" value="Enregistrer" class="boutonBleu2" /></td>
                             </tr>
                             <tr>
                                 <td><p:link outcome="admin" value="&lt; Retour Page pr&eacute;c&eacute;dente" class="texteBleu"></p:link></td>

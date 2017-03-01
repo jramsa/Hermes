@@ -41,6 +41,8 @@ public class HubBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         if (created != 0) {
             context.execute("swal('Félicitations','Service ajouté','success')");
+            setNameHosp("");
+            setNameHub("");
             return "addhub";
         } else {
             context.execute("swal('Oups...','Service déjà ajouté','error')");
@@ -58,6 +60,20 @@ public class HubBean implements Serializable {
     
     public void onHubinHasHubChange() {
             setListHubinHasHub(hubFacade.aGetListHubinHasHub(getNameHosp()));
+    }
+    
+    public String removeHubToHospital(){
+        int created = hubFacade.removeHubToHospital(nameHosp,nameHub);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (created != 0) {
+            context.execute("swal('Félicitations','Service supprimé','success')");
+            setNameHosp("");
+            setNameHub("");
+            return "remove";
+        } else {
+            context.execute("swal('Oups...','Service déjà supprimé','error')");
+            return "removehub";
+        }   
     }
 
     /**
