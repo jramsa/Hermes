@@ -42,4 +42,9 @@ public class HubEntityFacade extends AbstractFacade<HubEntity> {
         return (HubEntity)tmp.getSingleResult();
     }
     
+      public int addHubToHospital(String nameHosp,String nameHub){
+        Query query = em.createNativeQuery("INSERT INTO hasHub (hospitalName, idHub) VALUES ('"+ nameHosp +"', (SELECT idHub FROM Hub WHERE hubName='"+ nameHub + "'))");
+        return query.executeUpdate();    
+    }
+    
 }
