@@ -47,9 +47,8 @@ public class NoteTypeEntityFacade extends AbstractFacade<NoteTypeEntity> {
         return tmp.getResultList();   
     }
     
-    //a corriger
     public List<Object[]> getListInterventionMed(String mail){
-        Query query = em.createQuery("SELECT n.idNote, n.dateNote, n.note"+" FROM NoteEntity n");
+        Query query = em.createNativeQuery("SELECT n.idNote, n.dateNote, nt.noteName, n.Note, p.firsnamePatient, p.lastnamePatient FROM NoteType nt, Note n,User u, Patient p, hasNote h WHERE n.idNoteType=nt.idNoteType AND p.socialSecurityId=h.socialSecurityId AND h.idNote=n.idNote AND h.mailUser=u.mailUser AND u.mailUser ='"+ mail +"'");
         List <Object[]> list = query.getResultList();
         return list; 
     }

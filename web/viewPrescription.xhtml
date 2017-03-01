@@ -51,31 +51,37 @@
                         </tr>
                     </table>
 
-                    <table border="1" class="formResult">
-                        <tr>
-                            <td colspan="2" class="gris">Prescription $id</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Patient :</td>
-                            <td class="textecentre">$patient</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Date :</td>
-                            <td class="textecentre">$date</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Dur&eacute;e prescription :</td>
-                            <td class="textecentre">$dureePrescription</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Nomenclature m&eacute;dicament :</td>
-                            <td class="textecentre">$nomenclature</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Posologie par jour :</td>
-                            <td class="textecentre">$posologie</td>
-                        </tr>
-                    </table>
+                    <h:form>
+                        <br/><br/>
+                        <p:carousel var="n" value="#{prescriptionBean.aListPrescriptionView()}" headerText="Prescription(s)"  itemStyle="width:700px" numVisible="1" easing="easeOutBounce" >
+                            <table border="1" width="100%">
+                                <tr>
+                                    <td class="gris">Id : </td>
+                                    <td class="textecentre">#{n[0]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Patient :</td>
+                                    <td class="textecentre">#{n[1]} #{n[2]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Date :</td>
+                                    <td class="textecentre">#{n[3]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Dur&eacute;e prescription :</td>
+                                    <td class="textecentre">#{n[4]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Nomenclature m&eacute;dicament :</td>
+                                    <td class="textecentre">#{n[5]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Posologie :</td>
+                                    <td class="textecentre">#{n[6]}</td>
+                                </tr>
+                            </table>
+                        </p:carousel>   
+                    </h:form>
 
                     <table class="form2">
                         <tr>

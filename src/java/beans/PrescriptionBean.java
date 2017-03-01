@@ -9,6 +9,8 @@ import entities.PrescriptionEntity;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.context.RequestContext;
@@ -40,6 +42,16 @@ public class PrescriptionBean implements Serializable {
     
     @ManagedProperty(value="#{patientBean}")
     private PatientBean patient;
+    
+    private List <Object[]> listPrescriptionUser = new ArrayList<>();
+    public List<Object[]> aListPrescriptionView(){
+        setListPrescriptionUser(facadePrescription.getListPrescriptionMed(getUser().getUser().getMailUser()));
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : getListPrescriptionUser()){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
   
     /**
      * Creates a new instance of PrescriptionBean
@@ -103,5 +115,19 @@ public class PrescriptionBean implements Serializable {
      */
     public void setPatient(PatientBean patient) {
         this.patient = patient;
+    }
+
+    /**
+     * @return the listPrescriptionUser
+     */
+    public List <Object[]> getListPrescriptionUser() {
+        return listPrescriptionUser;
+    }
+
+    /**
+     * @param listPrescriptionUser the listPrescriptionUser to set
+     */
+    public void setListPrescriptionUser(List <Object[]> listPrescriptionUser) {
+        this.listPrescriptionUser = listPrescriptionUser;
     }
 }

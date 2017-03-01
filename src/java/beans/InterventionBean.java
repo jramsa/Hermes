@@ -10,6 +10,7 @@ import entities.InterventiontypeEntity;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.ejb.EJB;
@@ -64,6 +65,16 @@ public class InterventionBean implements Serializable {
         this.interventionType = t;
     }
     
+    private List <Object[]> listInterUser = new ArrayList<>();
+    public List<Object[]> aListInterView(){
+        listInterUser = interventionFacade.getListInterMed(getUser().getUser().getMailUser());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : listInterUser){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
+  
     
     /**
      * Creates a new instance of InterventionBean
