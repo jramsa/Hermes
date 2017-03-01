@@ -60,5 +60,5 @@ public class HubEntityFacade extends AbstractFacade<HubEntity> {
         Query query = em.createNativeQuery("DELETE FROM hasHub WHERE hospitalName='"+ nameHosp +"' AND idHub=(SELECT idHub from Hub WHERE Hub.hubName='"+ nameHub+ "')");
         return query.executeUpdate();    
     }
-    
+      
 }

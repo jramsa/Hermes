@@ -37,7 +37,7 @@
 
                 <div>
                     <table class="bcentre">
-                        <tr><td class="boutonVert">Ajouter un m&eacute;decin</td></tr>
+                        <tr><td class="boutonVert">Ajouter un utilisateur</td></tr>
                     </table>
 
                     <h:form>
@@ -63,8 +63,7 @@
                                 <td class="texteDr"><h:outputText value="R&ocirc;le : " /></td>
                                 <td>
                                     <p:selectOneMenu id="role" value="#{userBean.role}" style="width:205px">
-                                        <f:selectItem itemLabel="Masculin" itemValue="M" />
-                                        <f:selectItem itemLabel="F&eacute;minin" itemValue="F" />
+                                        <f:selectItems value="#{userBean.listRole()}" var="role"/>
                                     </p:selectOneMenu>
                                 </td>
                             </tr>

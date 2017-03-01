@@ -5,13 +5,16 @@
  */
 package beans;
 
+import entities.JobEntity;
 import entities.UserEntity;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import org.primefaces.context.RequestContext;
+import sessions.JobEntityFacade;
 import sessions.UserEntityFacade;
 
 /**
@@ -26,7 +29,11 @@ public class UserBean implements Serializable{
     @EJB     
     UserEntityFacade facade;
     
+    @EJB     
+    JobEntityFacade jobFacade;
+    
     private UserEntity user;
+    private JobEntity job;
     
     private String role;
     
@@ -42,14 +49,18 @@ public class UserBean implements Serializable{
                 }
         else{
             UserEntity tmp = facade.findUser(this.user);
-            if(tmp.getPassword().equals(this.user.getPassword()) && user.getMailUser().equals("admin@aphp.fr")){
-                this.user = new UserEntity();
+            if(tmp.getPassword().equals(this.user.getPassword()) && tmp.getIdJob().getIdJob()==3){
+                this.user = tmp;
                 return "admin";
             }
-            else if(tmp.getPassword().equals(this.user.getPassword())){
+            else if(tmp.getPassword().equals(this.user.getPassword()) && tmp.getIdJob().getIdJob()== 1){
                 //this.user = new UserEntity();
                 this.user = tmp;
                 return "accueil";
+            }
+            else if(tmp.getPassword().equals(this.user.getPassword())){
+                context.execute("swal('Oups...','Utilisateur non habilité','error')");
+                return "index";
             }
             else{
                 context.execute("swal('Oups...','Utilisateur ou mot de passe incorrect','error')");
@@ -58,7 +69,14 @@ public class UserBean implements Serializable{
         }           
     }
     
+    public List<Object[]> listRole(){
+        return facade.listRole();
+    }
+    
     public String createUser() {
+        int idJobRole = facade.getRoleUser(role);
+        job = jobFacade.find(idJobRole);
+        user.setIdJob(job);
         int created = facade.createUser(user);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == 1) {
