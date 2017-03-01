@@ -47,4 +47,14 @@ public class HubEntityFacade extends AbstractFacade<HubEntity> {
         return query.executeUpdate();    
     }
     
+      public List<Object[]> aGetListHospinHasHub(){
+        Query query = em.createNativeQuery("SELECT DISTINCT hospitalName FROM hasHub");
+        return query.getResultList();    
+    }
+      
+      public List<Object[]> aGetListHubinHasHub(String nameHosp){
+        Query query = em.createNativeQuery("SELECT hubName FROM Hub h, hasHub has WHERE h.idHub=has.idHub AND has.hospitalName = '"+ nameHosp +"'");
+        return query.getResultList();    
+    }
+    
 }

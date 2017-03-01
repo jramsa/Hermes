@@ -63,18 +63,4 @@ public class HospitalEntityFacade extends AbstractFacade<HospitalEntity> {
         tmp.setParameter("hospitalName", name);
         return (HospitalEntity) tmp.getSingleResult();
     }
-
-    /*public void addHubToHosp(String hospitalName, String hubName, HubEntity hub, HospitalEntity hosp) {
-        Query tmp1 = em.createNamedQuery("HospitalEntity.findByHospitalName",HospitalEntity.class);
-        tmp1.setParameter("hospitalName", hospitalName);
-        hub.setHospitalEntityList(tmp1.getResultList());
-        
-        Query tmp2 = em.createNamedQuery("HubEntity.findByHubName",HubEntity.class);
-        tmp2.setParameter("hubName", hubName);
-        hosp.setHubEntityList(tmp2.getResultList());
-
-        em.persist(hosp);
-        em.persist(hub);
-        em.close();
-    }*/
 }

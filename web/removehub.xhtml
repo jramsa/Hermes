@@ -47,14 +47,16 @@
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " /></td>
                                 <td>
-                                    <p:selectOneMenu id="hosp" value="#{hospitalBean.nameHosp}" style="width:205px">
-                                        <f:selectItems value="#{hospitalBean.listHospital()}" var="hospName" />
+                                     
+                                    <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
+                                        <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="serviceName" />
+                                        <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
                                     </p:selectOneMenu>
                                 </td>
                                 <td ><h:outputText value="Nom du p&ocirc;le : " /></td>
                                 <td>
-                                    <p:selectOneMenu id="serv" value="#{hospitalBean.nameHub}" style="width:205px">
-                                        <f:selectItems value="#{hubBean.listHub()}" var="serviceName"/>
+                                    <p:selectOneMenu id="serviceName" value="#{hubBean.nameHub}" style="width:205px">
+                                        <f:selectItems value="#{hubBean.listHubinHasHub}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
