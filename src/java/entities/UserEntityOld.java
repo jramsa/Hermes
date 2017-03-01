@@ -10,15 +10,12 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  *
@@ -33,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "UserEntity.findByLastnameUser", query = "SELECT u FROM UserEntity u WHERE u.lastnameUser = :lastnameUser")
     , @NamedQuery(name = "UserEntity.findByMailUser", query = "SELECT u FROM UserEntity u WHERE u.mailUser = :mailUser")
     , @NamedQuery(name = "UserEntity.findByPassword", query = "SELECT u FROM UserEntity u WHERE u.password = :password")})
-public class UserEntity implements Serializable {
+public class UserEntityOld implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -57,18 +54,15 @@ public class UserEntity implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "password")
     private String password;
-    @JoinColumn(name = "idJob", referencedColumnName = "idJob")
-    @ManyToOne(optional = false)
-    private JobEntity idJob;
 
-    public UserEntity() {
+    public UserEntityOld() {
     }
 
-    public UserEntity(String mailUser) {
+    public UserEntityOld(String mailUser) {
         this.mailUser = mailUser;
     }
 
-    public UserEntity(String mailUser, String firstnameUser, String lastnameUser, String password) {
+    public UserEntityOld(String mailUser, String firstnameUser, String lastnameUser, String password) {
         this.mailUser = mailUser;
         this.firstnameUser = firstnameUser;
         this.lastnameUser = lastnameUser;
@@ -107,14 +101,6 @@ public class UserEntity implements Serializable {
         this.password = password;
     }
 
-    public JobEntity getIdJob() {
-        return idJob;
-    }
-
-    public void setIdJob(JobEntity idJob) {
-        this.idJob = idJob;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -125,10 +111,10 @@ public class UserEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserEntity)) {
+        if (!(object instanceof UserEntityOld)) {
             return false;
         }
-        UserEntity other = (UserEntity) object;
+        UserEntityOld other = (UserEntityOld) object;
         if ((this.mailUser == null && other.mailUser != null) || (this.mailUser != null && !this.mailUser.equals(other.mailUser))) {
             return false;
         }
