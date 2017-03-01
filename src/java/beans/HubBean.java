@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 import sessions.HubEntityFacade;
 
 /**
@@ -40,10 +41,38 @@ public class HubBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         if (created != 0) {
             context.execute("swal('Félicitations','Service ajouté','success')");
+            setNameHosp("");
+            setNameHub("");
             return "addhub";
         } else {
             context.execute("swal('Oups...','Service déjà ajouté','error')");
             return "addhub";
+        }   
+    }
+    
+    private List<Object[]> ListHospinHasHub = new ArrayList<>();
+    public List<Object[]> aGetListHospinHasHub(){
+        setListHospinHasHub(hubFacade.aGetListHospinHasHub());
+        return getListHospinHasHub();
+    }
+    
+    private List<Object[]> listHubinHasHub = new ArrayList<>();
+    
+    public void onHubinHasHubChange() {
+            setListHubinHasHub(hubFacade.aGetListHubinHasHub(getNameHosp()));
+    }
+    
+    public String removeHubToHospital(){
+        int created = hubFacade.removeHubToHospital(nameHosp,nameHub);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (created != 0) {
+            context.execute("swal('Félicitations','Service supprimé','success')");
+            setNameHosp("");
+            setNameHub("");
+            return "remove";
+        } else {
+            context.execute("swal('Oups...','Service déjà supprimé','error')");
+            return "removehub";
         }   
     }
 
@@ -97,6 +126,34 @@ public class HubBean implements Serializable {
      */
     public void setNameHub(String nameHub) {
         this.nameHub = nameHub;
+    }
+
+    /**
+     * @return the ListHospinHasHub
+     */
+    public List<Object[]> getListHospinHasHub() {
+        return ListHospinHasHub;
+    }
+
+    /**
+     * @param ListHospinHasHub the ListHospinHasHub to set
+     */
+    public void setListHospinHasHub(List<Object[]> ListHospinHasHub) {
+        this.ListHospinHasHub = ListHospinHasHub;
+    }
+
+    /**
+     * @return the listHubinHasHub
+     */
+    public List<Object[]> getListHubinHasHub() {
+        return listHubinHasHub;
+    }
+
+    /**
+     * @param listHubinHasHub the listHubinHasHub to set
+     */
+    public void setListHubinHasHub(List<Object[]> listHubinHasHub) {
+        this.listHubinHasHub = listHubinHasHub;
     }
     
 }
