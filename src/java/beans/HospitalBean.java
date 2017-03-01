@@ -123,25 +123,5 @@ public class HospitalBean implements Serializable {
     public void setNameHosp(String nameHosp) {
         this.nameHosp = nameHosp;
     }
-    
-    public String addHubToHospital(){
-        HospitalEntity hospTmp = hospitalFacade.findHospitalByName(nameHosp);
-        HubEntity hubTmp = hubFacade.findHubByName(nameHub);
-        
-        //a modifier
-        //hospitalFacade.addHubToHosp(nameHosp, nameHub, hubTmp, hospTmp);
-        
-        //boolean created = hospitalFacade.createaddHubToHospital(intervention);
-        //hasPrescriptionFacade.createHasIntervention(getPatient().getSelectedPatient().getSocialSecurityId(),intervention.getIdIntervention(), getUser().getUser().getMailUser());
-        //RequestContext context = RequestContext.getCurrentInstance();
-        //if (created==true){
-        //context.execute("swal('Félicitations','Pôle ajouté','success')");
-        return "addhub";    
-        //}
-        /*else {
-            context.execute("swal('Oups...','Pôle non ajouté','error')");
-            return "addhub";
-        }*/
-    }
 
 }
