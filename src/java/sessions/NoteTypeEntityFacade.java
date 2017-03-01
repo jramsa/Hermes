@@ -40,5 +40,22 @@ public class NoteTypeEntityFacade extends AbstractFacade<NoteTypeEntity> {
         Query tmp = em.createNamedQuery("NoteTypeEntity.findByNoteName",NoteTypeEntity.class);
         tmp.setParameter("noteName", note);
         return (NoteTypeEntity)tmp.getSingleResult();
-    }    
+    }   
+    
+    public List<NoteTypeEntity> getListNoteType(){
+        Query tmp = em.createNamedQuery("NoteTypeEntity.findAll",NoteTypeEntity.class);
+        return tmp.getResultList();   
+    }
+    
+    public List<Object[]> getListNoteUser(String mail){
+        Query query = em.createNativeQuery("SELECT n.idNote, n.dateNote, nt.noteName, n.Note, p.firsnamePatient, p.lastnamePatient FROM NoteType nt, Note n,User u, Patient p, hasNote h WHERE n.idNoteType=nt.idNoteType AND p.socialSecurityId=h.socialSecurityId AND h.idNote=n.idNote AND h.mailUser=u.mailUser AND u.mailUser ='"+ mail +"' ORDER BY n.dateNote DESC ");
+        List <Object[]> list = query.getResultList();
+        return list; 
+    }
+    
+    public List<Object[]> getListNotePatient(String secu){
+        Query query = em.createNativeQuery("SELECT n.idNote,nt.noteName,n.Note, n.dateNote, u.firstnameUser,u.lastnameUser FROM Note n, NoteType nt, Patient p, hasNote h, User u WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idNote=n.idNote AND n.idNoteType=nt.idNoteType AND p.socialSecurityId ='"+ secu +"' ORDER BY n.dateNote DESC");
+        List <Object[]> list = query.getResultList();
+        return list; 
+    }
 }

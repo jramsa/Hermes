@@ -51,35 +51,42 @@
                         </tr>
                     </table>
 
-                    <table border="1" class="formResult">
-                        <tr>
-                            <td colspan="2" class="gris">Intervention $id</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Patient :</td>
-                            <td class="textecentre">$patient</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Date &eacute;dition :</td>
-                            <td class="textecentre">$dateEdition</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Type :</td>
-                            <td class="textecentre">$type</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Date intervention :
-                            </td><td class="textecentre">$date</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Prix :</td>
-                            <td class="textecentre">$prix</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Notes :</td>
-                            <td class="textecentre">$notes</td>
-                        </tr>
-                    </table>
+                    <h:form>
+                        <br/><br/>
+                        <p:carousel var="n" value="#{interventionBean.aListInterView()}" headerText="Intervention(s)"  itemStyle="width:700px" numVisible="1" easing="easeOutBounce" >
+                            <table border="1" width="100%">
+                                <tr>
+                                    <td class="gris">Id : </td>
+                                    <td class="textecentre">#{n[0]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Patient :</td>
+                                    <td class="textecentre">#{n[1]} #{n[2]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Date &eacute;dition :</td>
+                                    <td class="textecentre">#{n[3]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Type :</td>
+                                    <td class="textecentre">#{n[4]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Date intervention :
+                                    </td><td class="textecentre">#{n[5]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Prix :</td>
+                                    <td class="textecentre">#{n[6]} euros</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Notes :</td>
+                                    <td class="textecentre">#{n[7]}</td>
+                                </tr>
+
+                            </table>
+                        </p:carousel>   
+                    </h:form>
 
                     <table class="form2">
                         <tr>

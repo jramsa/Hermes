@@ -10,6 +10,7 @@ import entities.InterventiontypeEntity;
 import javax.inject.Named;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.ejb.EJB;
@@ -64,6 +65,26 @@ public class InterventionBean implements Serializable {
         this.interventionType = t;
     }
     
+    private List <Object[]> listInterUser = new ArrayList<>();
+    public List<Object[]> aListInterView(){
+        listInterUser = interventionFacade.getListInterMed(getUser().getUser().getMailUser());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : listInterUser){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
+    
+    private List <Object[]> listInterPatient = new ArrayList<>();
+    public List<Object[]> aListPatientInterView(){
+        listInterPatient = interventionFacade.getListInterPatient(getPatient().getSelectedPatient().getSocialSecurityId());
+        ArrayList<Object[]> tmp = new ArrayList<>();
+        for(Object[] o : getListInterPatient()){
+                tmp.add(o);
+        }
+        return tmp;    
+    }
+  
     
     /**
      * Creates a new instance of InterventionBean
@@ -140,5 +161,19 @@ public class InterventionBean implements Serializable {
      */
     public void setPatient(PatientBean patient) {
         this.patient = patient;
+    }
+
+    /**
+     * @return the listInterPatient
+     */
+    public List <Object[]> getListInterPatient() {
+        return listInterPatient;
+    }
+
+    /**
+     * @param listInterPatient the listInterPatient to set
+     */
+    public void setListInterPatient(List <Object[]> listInterPatient) {
+        this.listInterPatient = listInterPatient;
     }
 }

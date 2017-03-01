@@ -51,53 +51,34 @@
                             <td class="boutonVert">Consulter mes notes</td>
                         </tr>
                     </table>
-                    
-                    <!--<h:form>
-                        <p:repeat value="#{interventionBean.interName}" var="car">
-                        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
-                                <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
-                                <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
-                            </p:commandLink>
 
-                            <p:outputPanel>
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputText value="Id:" />
-                                    <h:outputText value="#{car.id}" style="font-weight: bold"/>
-
-                                    <h:outputText value="Year:" />
-                                    <h:outputText value="#{car.year}" style="font-weight: bold"/>
-
-                                    <h:outputText value="Color:" />
-                                    <h:outputText value="#{car.color}" style="font-weight: bold"/>
-                                </h:panelGrid>
-                            </p:outputPanel>
-                        </h:panelGrid>
-                        <hr />
-                    </p:repeat>
-                    </h:form>-->
-                        
-                    <table border="1" class="formResult">
-                        <tr>
-                            <td colspan="2" class="gris">Note $id</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Patient :</td>
-                            <td class="textecentre">$patient</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Date &eacute;dition :</td>
-                            <td class="textecentre">$dateEdition</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Type :</td>
-                            <td class="textecentre">$type</td>
-                        </tr>
-                        <tr>
-                            <td class="gris">Notes :</td>
-                            <td class="textecentre">$notes</td>
-                        </tr>
-                    </table>
+                    <h:form>
+                        <br/><br/>
+                        <p:carousel var="n" value="#{noteBean.aListNoteView()}" headerText="Note(s)"  itemStyle="width:700px" numVisible="1" easing="easeOutBounce" >
+                            <table border="1" width="100%">
+                                <tr>
+                                    <td class="gris">Id : </td>
+                                    <td class="textecentre">#{n[0]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Patient : </td>
+                                    <td class="textecentre">#{n[4]} #{n[5]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Date &eacute;dition :</td>
+                                    <td class="textecentre">#{n[1]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Type :</td>
+                                    <td class="textecentre">#{n[2]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="gris">Notes :</td>
+                                    <td class="textecentre">#{n[3]}</td>
+                                </tr>
+                            </table>
+                        </p:carousel>   
+                    </h:form>
 
                     <table class="form2">
                         <tr>

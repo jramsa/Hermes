@@ -6,9 +6,11 @@
 package sessions;
 
 import entities.InterventionEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -33,5 +35,17 @@ public class InterventionEntityFacade extends AbstractFacade<InterventionEntity>
         InterventionEntity i = em.find(InterventionEntity.class, intervention.getIdIntervention());
         em.persist(intervention);
         return true;        
+    }
+    
+    public List<Object[]> getListInterMed(String mail){
+        Query query = em.createNativeQuery("SELECT i.idIntervention, p.firsnamePatient,p.lastnamePatient,i.dateEdition, it.interventionName, i.dateIntervention, it.priceIntervention,i.reportIntervention FROM Intervention i, InterventionType it, Patient p, hasIntervention h, User u WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idIntervention=i.idIntervention AND i.idInterventionType=it.idInterventionType AND u.mailUser ='"+ mail +"' ORDER BY i.dateEdition DESC");
+        List <Object[]> list = query.getResultList();
+        return list; 
+    }
+    
+    public List<Object[]> getListInterPatient(String secu){
+        Query query = em.createNativeQuery("SELECT i.idIntervention,it.interventionName, i.dateIntervention,it.priceIntervention,i.reportIntervention,i.dateEdition, u.firstnameUser,u.lastnameUser FROM Intervention i, InterventionType it, Patient p, hasIntervention h, User u  WHERE h.mailUser=u.mailUser AND p.socialSecurityId=h.socialSecurityId AND h.idIntervention=i.idIntervention AND i.idInterventionType=it.idInterventionType AND p.socialSecurityId ='"+ secu +"' ORDER BY i.dateEdition DESC");
+        List <Object[]> list = query.getResultList();
+        return list; 
     }
 }
