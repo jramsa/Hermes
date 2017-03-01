@@ -5,7 +5,9 @@
  */
 package beans;
 
+
 import entities.JobEntity;
+import entities.HospitalEntity;
 import entities.UserEntity;
 import java.io.Serializable;
 import java.util.List;
@@ -37,6 +39,8 @@ public class UserBean implements Serializable{
     
     private String role;
     
+    private HospitalEntity hospitalEntity;
+    
     public UserBean() {
         user = new UserEntity();
     }
@@ -56,6 +60,7 @@ public class UserBean implements Serializable{
             else if(tmp.getPassword().equals(this.user.getPassword()) && tmp.getIdJob().getIdJob()== 1){
                 //this.user = new UserEntity();
                 this.user = tmp;
+                updateHospital();
                 return "accueil";
             }
             else if(tmp.getPassword().equals(this.user.getPassword())){
@@ -119,6 +124,7 @@ public class UserBean implements Serializable{
         this.user = user;
     }
 
+
     /**
      * @return the role
      */
@@ -131,5 +137,35 @@ public class UserBean implements Serializable{
      */
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    /*public String getUserJob() {
+        return facade.getUserJob(user);
+    }*/
+    
+    public String getUserHub() {
+        return facade.getUserHub(user);
+    }
+    
+    public String getUserService() {
+        return facade.getUserService(user);
+    }
+    
+    public void updateHospital() {
+        HospitalEntity entity = facade.getUserHospitalEntity(user);
+        if(entity == null) {
+            System.out.println("null");
+            return;
+        }
+        setHospitalEntity(entity);
+    }
+    
+    public void setHospitalEntity(HospitalEntity hospitalEntity) {
+        this.hospitalEntity = hospitalEntity;
+    }
+    
+    public HospitalEntity getHospital() {
+        return hospitalEntity;
+
     }
 }
