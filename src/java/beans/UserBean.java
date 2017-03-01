@@ -5,6 +5,7 @@
  */
 package beans;
 
+import entities.HospitalEntity;
 import entities.UserEntity;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -28,6 +29,8 @@ public class UserBean implements Serializable{
     
     private UserEntity user;
     
+    private HospitalEntity hospitalEntity;
+    
     public UserBean() {
         user = new UserEntity();
     }
@@ -47,6 +50,7 @@ public class UserBean implements Serializable{
             else if(tmp.getPassword().equals(this.user.getPassword())){
                 //this.user = new UserEntity();
                 this.user = tmp;
+                updateHospital();
                 return "accueil";
             }
             else{
@@ -97,5 +101,34 @@ public class UserBean implements Serializable{
      */
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+    
+    /*public String getUserJob() {
+        return facade.getUserJob(user);
+    }*/
+    
+    public String getUserHub() {
+        return facade.getUserHub(user);
+    }
+    
+    public String getUserService() {
+        return facade.getUserService(user);
+    }
+    
+    public void updateHospital() {
+        HospitalEntity entity = facade.getUserHospitalEntity(user);
+        if(entity == null) {
+            System.out.println("null");
+            return;
+        }
+        setHospitalEntity(entity);
+    }
+    
+    public void setHospitalEntity(HospitalEntity hospitalEntity) {
+        this.hospitalEntity = hospitalEntity;
+    }
+    
+    public HospitalEntity getHospital() {
+        return hospitalEntity;
     }
 }
