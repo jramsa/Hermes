@@ -10,7 +10,8 @@
         <link rel="stylesheet" type="text/css" href="style/style.css" media="all" />
         <style>
         </style>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <h:outputStylesheet library="css" name="sweetalert.css" />
+        <h:outputScript library="js" name="sweetalert.min.js" />
     </h:head>
 
     <h:body>
@@ -37,55 +38,58 @@
 
                 <div>
                     <table class="bcentre">
-                        <tr><td class="boutonVert">Ajouter un m&eacute;decin &agrave; un service</td></tr>
+                        <tr><td class="boutonVert">Ajouter un utilisateur &agrave; un service</td></tr>
                     </table>
 
                     <h:form>
                         <table class = "form3">
                             <tr>
-                                <td class="texteDr"><h:outputText value="Nom de l'h&ocirc;pital : " /></td>
-                                <td class="texteGauche">
-                                    <select name="hospitalName" id="hospitalName">
-                                        <option value="rien" selected="selected">--liste des h&ocirc;pitaux--</option>
-                                    </select>
+                                <td class ="texteDr"><h:outputText value="H&ocirc;pital: " /></td>
+                                <td>
+                                    <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
+                                        <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="poleName" />
+                                        <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
+                                    </p:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="texteDr">Nom du p&ocirc;le : </td>
-                                <td class="texteGauche">
-                                    <select name="hubName" id="hubName">
-                                        <option value="rien" selected="selected">--liste des p&ocirc;les--</option>
-                                    </select>
+                                <td class ="texteDr"><h:outputText value="P&ocirc;le : " /></td>
+                                <td>
+                                    <p:selectOneMenu id="poleName" value="#{hubBean.nameHub}" style="width:205px">
+                                        <p:ajax listener="#{hubBean.onListServHasServChange()}" update="serviceName" />
+                                        <f:selectItems value="#{hubBean.listHubinHasHub}" var="poleName"/>
+                                    </p:selectOneMenu>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="texteDr">Nom du service : </td>
-                                <td class="texteGauche">
-                                    <select name="serviceName" id="serviceName">
-                                        <option value="rien" selected="selected">--liste des services--</option>
-                                    </select>
+                                <td class ="texteDr"><h:outputText value="Service : " /></td>
+                                <td>
+                                    <p:selectOneMenu id="serviceName" value="#{hubBean.nameServ}" style="width:205px">
+                                        <p:ajax listener="#{hubBean.onListUserChange()}" update="userName" />
+                                        <f:selectItems value="#{hubBean.listServHasServ}" var="serviceName"/>
+                                    </p:selectOneMenu>
                                 </td>
-                                <tr>
-                                    <td class="texteDr">Nom du m&eacute;decin : </td>
-                                    <td class="texteGauche"> 
-                                        <select name="serviceName" id="serviceName">
-                                            <option value="rien" selected="selected">--liste des m&eacute;decins--</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                            </tr>
+                            <tr>
+                                <td class ="texteDr"><h:outputText value="Utilisateur : " /></td>
+                                <td>
+                                    <p:selectOneMenu id="userName" value="#{hubBean.nameUser}" style="width:205px">
+                                        <f:selectItems value="#{hubBean.listUser}" var="userName"/>
+                                    </p:selectOneMenu>
+                                </td>
                             </tr>
                         </table>
 
                         <table class="form2">
                             <tr>
-                                <td><p:commandButton action="e" value="Enregistrer" class="boutonBleu2" /></td>
+                                <td><p:commandButton action="#{hubBean.addUserToServ()}" value="Enregistrer" class="boutonBleu2" /></td>
                             </tr>
                             <tr>
                                 <td><p:link outcome="admin" value="&lt; Retour Page pr&eacute;c&eacute;dente" class="texteBleu"></p:link></td>
                             </tr>
                         </table>
-                        
-                        </h:form>
+
+                    </h:form>
                 </div>	
             </div>
 
@@ -95,5 +99,5 @@
         </div>
 
 
-        </h:body>
+    </h:body>
 </html>

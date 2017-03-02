@@ -5,6 +5,7 @@
  */
 package sessions;
 
+import entities.JobEntity;
 import entities.HospitalEntity;
 import entities.UserEntity;
 import java.util.List;
@@ -85,5 +86,20 @@ public class UserEntityFacade extends AbstractFacade<UserEntity> {
     }
     
     
+    
+    public int getRoleUser(String role){
+        Query query = em.createNativeQuery("SELECT idJob FROM Job WHERE jobName='"+ role +"'");
+        return (int)query.getSingleResult();    
+    }
+    
+    public List<Object[]> listRole(){
+        Query query = em.createNativeQuery("SELECT jobName FROM Job");
+        return query.getResultList();    
+    }
+    
+    public JobEntity findRole (int j) {
+        JobEntity job = em.find(JobEntity.class, j);
+        return job;
+    }
     
 }
