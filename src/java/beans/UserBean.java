@@ -54,11 +54,10 @@ public class UserBean implements Serializable{
         else{
             UserEntity tmp = facade.findUser(this.user);
             if(tmp.getPassword().equals(this.user.getPassword()) && tmp.getIdJob().getIdJob()==3){
-                this.user = tmp;
+                //this.user = tmp;
                 return "admin";
             }
             else if(tmp.getPassword().equals(this.user.getPassword()) && tmp.getIdJob().getIdJob()== 1){
-                //this.user = new UserEntity();
                 this.user = tmp;
                 updateHospital();
                 return "accueil";
