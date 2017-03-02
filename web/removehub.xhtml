@@ -48,7 +48,6 @@
                             <tr>
                                 <td ><h:outputText value="Nom de l'h&ocirc;pital : " /></td>
                                 <td>
-                                     
                                     <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="serviceName" />
                                         <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
