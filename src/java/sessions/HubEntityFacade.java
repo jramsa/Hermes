@@ -72,8 +72,23 @@ public class HubEntityFacade extends AbstractFacade<HubEntity> {
         return query.getResultList();    
     }
       
+      public List<Object[]> onlistUserHasServChange(String nameServ){
+        Query query = em.createNativeQuery("SELECT u.mailUser FROM User u, workIn w, Service s WHERE u.mailUser=w.mailUser AND w.idService=s.idService AND serviceName='"+nameServ+"'");
+        return query.getResultList();    
+    }
+      
       public int removeHubToHospital(String nameHosp,String nameHub){
         Query query = em.createNativeQuery("DELETE FROM hasHub WHERE hospitalName='"+ nameHosp +"' AND idHub=(SELECT idHub from Hub WHERE Hub.hubName='"+ nameHub+ "')");
+        return query.executeUpdate();    
+    }
+      
+      public int removeServToHub(String nameHub,String nameServ){
+        Query query = em.createNativeQuery("DELETE FROM hasService WHERE idHub=(SELECT idHub FROM Hub WHERE hubName='"+ nameHub +"') AND idService=(SELECT idService from Service WHERE serviceName='"+ nameServ+ "')");
+        return query.executeUpdate();    
+    }
+      
+      public int removeUserToServ(String nameServ,String nameUser){
+        Query query = em.createNativeQuery("DELETE FROM workIn WHERE mailUser='"+nameUser+"' AND idService=(SELECT idService from Service WHERE serviceName='"+ nameServ+ "')");
         return query.executeUpdate();    
     }
       

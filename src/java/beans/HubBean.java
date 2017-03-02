@@ -104,6 +104,12 @@ public class HubBean implements Serializable {
             listServHasServ = hubFacade.onListServHasServChange(nameHub);
     }
     
+    private List<Object[]> listUserHasServ = new ArrayList<>();
+    
+    public void onlistUserHasServChange() {
+            listUserHasServ = hubFacade.onlistUserHasServChange(nameServ);
+    }
+    
     private List<Object[]> listUser = new ArrayList<>();
     
     public void onListUserChange() {
@@ -114,13 +120,41 @@ public class HubBean implements Serializable {
         int created = hubFacade.removeHubToHospital(nameHosp,nameHub);
         RequestContext context = RequestContext.getCurrentInstance();
         if (created != 0) {
+            context.execute("swal('Félicitations','Pôle supprimé','success')");
+            setNameHosp("");
+            setNameHub("");
+            return "removehub";
+        } else {
+            context.execute("swal('Oups...','Pôle déjà supprimé','error')");
+            return "removehub";
+        }   
+    }
+    
+    public String removeServToHub(){
+        int created = hubFacade.removeServToHub(nameHub,nameServ);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (created != 0) {
             context.execute("swal('Félicitations','Service supprimé','success')");
             setNameHosp("");
             setNameHub("");
-            return "remove";
+            return "removeserv";
         } else {
             context.execute("swal('Oups...','Service déjà supprimé','error')");
-            return "removehub";
+            return "removeserv";
+        }   
+    }
+    
+    public String removeUserToServ(){
+        int created = hubFacade.removeUserToServ(nameServ,nameUser);
+        RequestContext context = RequestContext.getCurrentInstance();
+        if (created != 0) {
+            context.execute("swal('Félicitations','Utilisateur supprimé','success')");
+            setNameHosp("");
+            setNameHub("");
+            return "removeuser";
+        } else {
+            context.execute("swal('Oups...','Utilisateur déjà supprimé','error')");
+            return "removeuser";
         }   
     }
 
@@ -272,6 +306,20 @@ public class HubBean implements Serializable {
      */
     public void setListUser(List<Object[]> listUser) {
         this.listUser = listUser;
+    }
+
+    /**
+     * @return the listUserHasServ
+     */
+    public List<Object[]> getListUserHasServ() {
+        return listUserHasServ;
+    }
+
+    /**
+     * @param listUserHasServ the listUserHasServ to set
+     */
+    public void setListUserHasServ(List<Object[]> listUserHasServ) {
+        this.listUserHasServ = listUserHasServ;
     }
     
 }
