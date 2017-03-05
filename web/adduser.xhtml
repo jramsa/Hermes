@@ -63,6 +63,7 @@
                                 <td class="texteDr"><h:outputText value="R&ocirc;le : " /></td>
                                 <td>
                                     <p:selectOneMenu id="role" value="#{userBean.role}" style="width:205px">
+                                        <f:selectItem itemLabel="--Sélectionner un r&ocirc;le--" noSelectionOption="true" />
                                         <f:selectItems value="#{userBean.listRole()}" var="role"/>
                                     </p:selectOneMenu>
                                 </td>

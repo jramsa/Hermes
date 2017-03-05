@@ -49,6 +49,7 @@
                                 <td ><br/><br/><h:outputText value="Sexe : " /></td>
                                 <td><br/><br/>
                                     <p:selectOneMenu id="sexPatient" value="#{patientBean.patient.sexPatient}" style="width:205px">
+                                        <f:selectItem itemLabel="--Sélectionner un genre--" noSelectionOption="true" />
                                         <f:selectItem itemLabel="Masculin" itemValue="M" />
                                         <f:selectItem itemLabel="F&eacute;minin" itemValue="F" />
                                     </p:selectOneMenu></td>
@@ -58,6 +59,7 @@
                             <tr>
                                 <td ><h:outputText value="Groupe sanguin : " /></td>
                                 <td><p:selectOneMenu id="bloodGroup" value="#{patientBean.patient.bloodGroup}" style="width:205px">
+                                        <f:selectItem itemLabel="--Sélectionner un groupe sanguin--" noSelectionOption="true" />
                                         <f:selectItem itemLabel="A+" itemValue="A+" />
                                         <f:selectItem itemLabel="A-" itemValue="A-" />
                                         <f:selectItem itemLabel="B+" itemValue="B+" />

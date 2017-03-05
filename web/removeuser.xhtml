@@ -45,6 +45,7 @@
                                 <td>
                                     <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="poleName" />
+                                        <f:selectItem itemLabel="--Sélectionner un h&ocirc;pital--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -54,6 +55,7 @@
                                 <td>
                                     <p:selectOneMenu id="poleName" value="#{hubBean.nameHub}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onListServHasServChange()}" update="serviceName" />
+                                        <f:selectItem itemLabel="--Sélectionner un p&ocirc;le--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listHubinHasHub}" var="poleName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -63,6 +65,7 @@
                                 <td>
                                     <p:selectOneMenu id="serviceName" value="#{hubBean.nameServ}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onlistUserHasServChange()}" update="userName" />
+                                        <f:selectItem itemLabel="--Sélectionner un service--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listServHasServ}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -70,6 +73,7 @@
                                     <td class ="texteDr"><h:outputText value="Utilisateur : " /></td>
                                 <td>
                                     <p:selectOneMenu id="userName" value="#{hubBean.nameUser}" style="width:205px">
+                                        <f:selectItem itemLabel="--Sélectionner un r&ocirc;le--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listUserHasServ}" var="userName"/>
                                     </p:selectOneMenu>
                                 </td>
