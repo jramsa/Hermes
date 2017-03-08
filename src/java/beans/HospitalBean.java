@@ -63,7 +63,10 @@ public class HospitalBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == true) {
             context.execute("swal('Félicitations','Hôpital créé','success')");
-            this.hospital = new HospitalEntity();
+            hospital.setHospitalName("");
+            hospital.setCityAddress("");
+            hospital.setCountryAddress("");
+            hospital.setDetailAddress("");
             return "addhosp";
         } else {
             context.execute("swal('Oups...','Hôpital existe déjà','error')");

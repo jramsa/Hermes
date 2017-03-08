@@ -50,14 +50,14 @@
                                 <td>
                                     <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="serviceName" />
-                                        <f:selectItem itemLabel="--Sélectionner un h&ocirc;pital--" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="--S&eacute;lectionner un h&ocirc;pital--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
                                     </p:selectOneMenu>
                                 </td>
                                 <td ><h:outputText value="Nom du p&ocirc;le : " /></td>
                                 <td>
                                     <p:selectOneMenu id="serviceName" value="#{hubBean.nameHub}" style="width:205px">
-                                        <f:selectItem itemLabel="--Sélectionner un p&ocirc;le--" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="--S&eacute;lectionner un p&ocirc;le--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listHubinHasHub}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>

@@ -50,7 +50,7 @@
                                 <td>
                                     <p:selectOneMenu id="nameHosp" value="#{hubBean.nameHosp}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onHubinHasHubChange()}" update="poleName" />
-                                        <f:selectItem itemLabel="--Sélectionner un h&ocirc;pital--" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="--S&eacute;lectionner un h&ocirc;pital--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.aGetListHospinHasHub()}" var="hospName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -58,7 +58,7 @@
                                 <td>
                                     <p:selectOneMenu id="poleName" value="#{hubBean.nameHub}" style="width:205px">
                                         <p:ajax listener="#{hubBean.onServinHasServChange()}" update="serviceName" />
-                                        <f:selectItem itemLabel="--Sélectionner un p&ocirc;le--" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="--S&eacute;lectionner un p&ocirc;le--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listHubinHasHub}" var="poleName"/>
                                     </p:selectOneMenu>
                                 </td>
@@ -67,7 +67,7 @@
                                 <td colspan="2"><h:outputText value="Service : " /></td>
                                 <td>
                                     <p:selectOneMenu id="serviceName" value="#{hubBean.nameServ}" style="width:205px">
-                                        <f:selectItem itemLabel="--Sélectionner un service--" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="--S&eacute;lectionner un service--" noSelectionOption="true" />
                                         <f:selectItems value="#{hubBean.listServ}" var="serviceName"/>
                                     </p:selectOneMenu>
                                 </td>
