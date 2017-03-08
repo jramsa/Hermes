@@ -53,7 +53,13 @@ public class PatientBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         if (created == 1) {
             context.execute("swal('Félicitations','Patient créé','success')");
-            this.patient = new PatientEntity();
+            patient.setFirsnamePatient("");
+            patient.setLastnamePatient("");
+            patient.setCityAddress("");
+            patient.setCountryAddress("");
+            patient.setDetailAddress("");
+            patient.setSocialSecurityId("");
+            patient.setSexPatient("");
             return "nouveauPatient";
         } else {
             context.execute("swal('Oups...','Impossible de créer le patient','error')");
