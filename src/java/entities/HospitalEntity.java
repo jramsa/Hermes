@@ -54,12 +54,12 @@ public class HospitalEntity implements Serializable {
     private String hospitalName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 70)
     @Column(name = "detailAddress")
     private String detailAddress;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 25)
     @Column(name = "cityAddress")
     private String cityAddress;
     @Column(name = "postalAddress")
